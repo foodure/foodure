@@ -1,0 +1,27 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-foodure-dev-124348-authRole",
+      "UnauthRoleArn": "arn:aws:iam::236917453187:role/amplify-foodure-dev-124348-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::236917453187:role/amplify-foodure-dev-124348-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-foodure-dev-124348-deployment",
+      "UnauthRoleName": "amplify-foodure-dev-124348-unauthRole",
+      "StackName": "amplify-foodure-dev-124348",
+      "StackId": "arn:aws:cloudformation:us-east-2:236917453187:stack/amplify-foodure-dev-124348/a4aa07e0-0d64-11ec-89e5-0ac2a704f1d0",
+      "AmplifyAppId": "d38n94wt12s7kn"
+    },
+    "categories": {
+      "auth": {
+        "fooduredaacce13": {}
+      },
+      "notifications": {
+        "Pinpoint": {
+          "Name": "foodureNkZBl-dev",
+          "Id": "6e7c17f1d39b407e93e9f20b367db124",
+          "Region": "us-east-1"
+        }
+      }
+    }
+  }
+}
