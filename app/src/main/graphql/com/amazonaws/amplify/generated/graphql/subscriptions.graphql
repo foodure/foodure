@@ -1,55 +1,73 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateTask {
-    onCreateTask {
-        id
-        title
-        description
-        status
-        createdAt
-        updatedAt
-    }
+subscription OnCreateAdmin {
+  onCreateAdmin {
+    id
+    title
+    description
+    status
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
-subscription OnUpdateTask {
-    onUpdateTask {
-        id
-        title
-        description
-        status
-        createdAt
-        updatedAt
-    }
+subscription OnUpdateAdmin {
+  onUpdateAdmin {
+    id
+    title
+    description
+    status
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
-subscription OnDeleteTask {
-    onDeleteTask {
-        id
-        title
-        description
-        status
-        createdAt
-        updatedAt
-    }
+subscription OnDeleteAdmin {
+  onDeleteAdmin {
+    id
+    title
+    description
+    status
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
 subscription OnCreateNote {
-    onCreateNote {
-        id
-        content
-        createdAt
-        updatedAt
-    }
+  onCreateNote {
+    id
+    content
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
 subscription OnUpdateNote {
-    onUpdateNote {
-        id
-        content
-        createdAt
-        updatedAt
-    }
+  onUpdateNote {
+    id
+    content
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
 subscription OnDeleteNote {
-    onDeleteNote {
-        id
-        content
-        createdAt
-        updatedAt
-    }
+  onDeleteNote {
+    id
+    content
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }

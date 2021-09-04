@@ -20,7 +20,9 @@
         android:theme="@style/Theme.Foodure">
         <activity
             android:name=".view.ProfileActivity"
-            android:exported="true" />
+            android:exported="true"
+
+            />
         <activity
             android:name=".view.SettingsActivity"
             android:exported="true" />

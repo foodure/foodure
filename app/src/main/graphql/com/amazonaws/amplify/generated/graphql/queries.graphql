@@ -1,51 +1,117 @@
 # this is an auto generated file. This will be overwritten
-query GetTask($id: ID!) {
-    getTask(id: $id) {
-        id
-        title
-        description
-        status
-        createdAt
-        updatedAt
-    }
-}
-query ListTasks(
-    $filter: ModelTaskFilterInput
-    $limit: Int
-    $nextToken: String
+query SyncAdmins(
+  $filter: ModeladminFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
 ) {
-    listTasks(filter: $filter, limit: $limit, nextToken: $nextToken) {
-        items {
-            id
-            title
-            description
-            status
-            createdAt
-            updatedAt
-        }
-        nextToken
+  syncAdmins(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      title
+      description
+      status
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
     }
+    nextToken
+    startedAt
+  }
+}
+query GetAdmin($id: ID!) {
+  getAdmin(id: $id) {
+    id
+    title
+    description
+    status
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListAdmins(
+  $filter: ModeladminFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAdmins(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      description
+      status
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncNotes(
+  $filter: ModelNoteFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncNotes(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      content
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
 }
 query GetNote($id: ID!) {
-    getNote(id: $id) {
-        id
-        content
-        createdAt
-        updatedAt
-    }
+  getNote(id: $id) {
+    id
+    content
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
 query ListNotes(
-    $filter: ModelNoteFilterInput
-    $limit: Int
-    $nextToken: String
+  $filter: ModelNoteFilterInput
+  $limit: Int
+  $nextToken: String
 ) {
-    listNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
-        items {
-            id
-            content
-            createdAt
-            updatedAt
-        }
-        nextToken
+  listNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      content
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
     }
+    nextToken
+    startedAt
+  }
 }
