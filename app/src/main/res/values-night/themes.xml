@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Foodure" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/hit_pink</item>
+        <item name="colorPrimaryDark">@color/cream_can</item>
+        <item name="colorAccent">@color/hit_pink</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>
