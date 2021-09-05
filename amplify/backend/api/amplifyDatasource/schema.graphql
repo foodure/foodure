@@ -1,10 +1,41 @@
-type Task @model {
-    id: ID!
-    title: String!
-    description: String
-    status: String
+type Account @model {
+  id: ID!
+  email: String!
+  firstName: String
+  secondName: String
+  username: String!
+  maritalStatus: String!
+  age: Int
+  location : String!
 }
-type Note @model {
-    id: ID!
-    content: String!
+
+type Restaurant @model {
+  id: ID!
+  email: String!
+  title: String!
+  username: String!
+  location : String!
+  restaurantPost: [FoodPost] @connection(keyName: "foodItem", fields: ["id"])
+}
+
+# Create a join model and disable queries as you don't need them
+# and can query through Post.editors and User.posts
+type FoodPost @model
+@key(name: "foodItem", fields: ["foodID", "orderID"])
+@key(name: "orderPost", fields: ["orderID", "foodID"])
+{
+  id: ID!
+  foodID: ID!
+  orderID: ID!
+  type: String!
+  quantity: String!
+  restaurant: Restaurant! @connection(fields: ["foodID"])
+  cart: Cart @connection(fields: ["orderID"])
+}
+
+type Cart @model {
+  id: ID!
+  username: String!
+  location : String!
+  cartPosts: [FoodPost] @connection(keyName: "orderPost", fields: ["id"])
 }

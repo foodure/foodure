@@ -1,55 +1,358 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateTask {
-    onCreateTask {
-        id
-        title
-        description
-        status
-        createdAt
-        updatedAt
-    }
+subscription OnCreateAccount {
+  onCreateAccount {
+    id
+    email
+    firstName
+    secondName
+    username
+    maritalStatus
+    age
+    location
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
-subscription OnUpdateTask {
-    onUpdateTask {
-        id
-        title
-        description
-        status
-        createdAt
-        updatedAt
-    }
+subscription OnUpdateAccount {
+  onUpdateAccount {
+    id
+    email
+    firstName
+    secondName
+    username
+    maritalStatus
+    age
+    location
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
-subscription OnDeleteTask {
-    onDeleteTask {
-        id
-        title
-        description
-        status
-        createdAt
-        updatedAt
-    }
+subscription OnDeleteAccount {
+  onDeleteAccount {
+    id
+    email
+    firstName
+    secondName
+    username
+    maritalStatus
+    age
+    location
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
-subscription OnCreateNote {
-    onCreateNote {
+subscription OnCreateRestaurant {
+  onCreateRestaurant {
+    id
+    email
+    title
+    username
+    location
+    restaurantPost {
+      items {
         id
-        content
+        foodID
+        orderID
+        type
+        quantity
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
+      }
+      nextToken
+      startedAt
     }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
-subscription OnUpdateNote {
-    onUpdateNote {
+subscription OnUpdateRestaurant {
+  onUpdateRestaurant {
+    id
+    email
+    title
+    username
+    location
+    restaurantPost {
+      items {
         id
-        content
+        foodID
+        orderID
+        type
+        quantity
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
+      }
+      nextToken
+      startedAt
     }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
-subscription OnDeleteNote {
-    onDeleteNote {
+subscription OnDeleteRestaurant {
+  onDeleteRestaurant {
+    id
+    email
+    title
+    username
+    location
+    restaurantPost {
+      items {
         id
-        content
+        foodID
+        orderID
+        type
+        quantity
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
+      }
+      nextToken
+      startedAt
     }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateFoodPost {
+  onCreateFoodPost {
+    id
+    foodID
+    orderID
+    type
+    quantity
+    restaurant {
+      id
+      email
+      title
+      username
+      location
+      restaurantPost {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    cart {
+      id
+      username
+      location
+      cartPosts {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateFoodPost {
+  onUpdateFoodPost {
+    id
+    foodID
+    orderID
+    type
+    quantity
+    restaurant {
+      id
+      email
+      title
+      username
+      location
+      restaurantPost {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    cart {
+      id
+      username
+      location
+      cartPosts {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteFoodPost {
+  onDeleteFoodPost {
+    id
+    foodID
+    orderID
+    type
+    quantity
+    restaurant {
+      id
+      email
+      title
+      username
+      location
+      restaurantPost {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    cart {
+      id
+      username
+      location
+      cartPosts {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateCart {
+  onCreateCart {
+    id
+    username
+    location
+    cartPosts {
+      items {
+        id
+        foodID
+        orderID
+        type
+        quantity
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateCart {
+  onUpdateCart {
+    id
+    username
+    location
+    cartPosts {
+      items {
+        id
+        foodID
+        orderID
+        type
+        quantity
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteCart {
+  onDeleteCart {
+    id
+    username
+    location
+    cartPosts {
+      items {
+        id
+        foodID
+        orderID
+        type
+        quantity
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
