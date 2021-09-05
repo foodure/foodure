@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Account;
 import com.foodure.R;
 
 import java.util.Objects;
@@ -17,6 +19,7 @@ import java.util.Objects;
 public class LoginActivity extends AppCompatActivity {
 
   private static final String TAG = "LoginActivity";
+  private Account AccountData;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +55,42 @@ public class LoginActivity extends AppCompatActivity {
         password,
         success -> {
           Log.i(TAG, "signIn: worked " + success.toString());
-          Intent goToMain = new Intent(LoginActivity.this, MainActivity.class);
-          goToMain.putExtra("username", username);
-          startActivity(goToMain);
+
+          String str = Amplify.Auth.getCurrentUser().getUsername();
+
+          getAccountTypeFromAPIByName(str);
+
+          try {
+            Thread.sleep(3000);
+          } catch (InterruptedException e) {
+            e.printStackTrace();
+          }
+
+          if(AccountData.getType().equals("user")){
+            Intent goToMain = new Intent(LoginActivity.this, MainActivity.class);
+            goToMain.putExtra("username", username);
+            startActivity(goToMain);
+          } else if (AccountData.getType().equals("restaurant")) {
+            Intent goToMain = new Intent(LoginActivity.this, RestaurantActivity.class);
+            startActivity(goToMain);
+          }
+
         },
         error -> Log.e(TAG, "signIn: failed" + error.toString()));
+  }
+
+  public void getAccountTypeFromAPIByName(String name) {
+    Amplify.API.query(
+        ModelQuery.list(Account.class, Account.USERNAME.contains(name)),
+        response -> {
+          for (Account account : response.getData()) {
+            Log.i(TAG, "account type: " + account.getType());
+            AccountData = account;
+          }
+        },
+        error -> {
+          Log.i(TAG, "Query failure", error);
+        }
+    );
   }
 }

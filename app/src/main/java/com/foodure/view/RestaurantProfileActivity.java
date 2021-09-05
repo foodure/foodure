@@ -18,14 +18,13 @@ public class RestaurantProfileActivity extends AppCompatActivity {
     setContentView(R.layout.activity_restaurant_profile);
     Objects.requireNonNull(getSupportActionBar()).hide();
 
-    ImageView back = findViewById(R.id.back_profile);
+    ImageView back = findViewById(R.id.back_restaurantAddFoodPage);
 
     back.setOnClickListener(v -> back());
   }
 
-
   public void back() {
-    Intent goToMain = new Intent(RestaurantProfileActivity.this, MainActivity.class);
+    Intent goToMain = new Intent(RestaurantProfileActivity.this, RestaurantActivity.class);
     startActivity(goToMain);
   }
 }

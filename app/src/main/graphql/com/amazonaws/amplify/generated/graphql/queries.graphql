@@ -13,13 +13,11 @@ query SyncAccounts(
   ) {
     items {
       id
-      email
       firstName
       secondName
       username
-      maritalStatus
-      age
       location
+      type
       _version
       _deleted
       _lastChangedAt
@@ -33,13 +31,11 @@ query SyncAccounts(
 query GetAccount($id: ID!) {
   getAccount(id: $id) {
     id
-    email
     firstName
     secondName
     username
-    maritalStatus
-    age
     location
+    type
     _version
     _deleted
     _lastChangedAt
@@ -55,13 +51,11 @@ query ListAccounts(
   listAccounts(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      email
       firstName
       secondName
       username
-      maritalStatus
-      age
       location
+      type
       _version
       _deleted
       _lastChangedAt

@@ -8,13 +8,16 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import com.amplifyframework.AmplifyException;
 import com.amplifyframework.api.aws.AWSApiPlugin;
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
+import com.amplifyframework.datastore.generated.model.Account;
 import com.amplifyframework.storage.s3.AWSS3StoragePlugin;
 import com.foodure.R;
 
@@ -24,7 +27,9 @@ import java.util.Objects;
 public class SplashScreenActivity extends AppCompatActivity {
 
     private static final String TAG = "SplashScreenActivity";
-    final Handler handler = new Handler();
+    private final Handler handler = new Handler();
+    private Account AccountData;
+    private Handler handler2 = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,13 @@ public class SplashScreenActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
 //    throw new RuntimeException("Test Crash");
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         handler.postDelayed(() -> {
             Log.i(TAG, "onCreate: ");
@@ -72,9 +84,29 @@ public class SplashScreenActivity extends AppCompatActivity {
 
             if (isCurrentUser()) {
                 Log.i(TAG, "Auth: " + Amplify.Auth.getCurrentUser().toString());
-//                Intent goToMain = new Intent(SplashScreenActivity.this, MainActivity.class);
-//                startActivity(goToMain);
-              Log.i(TAG, "config:>>> " + Amplify.Auth.getCurrentUser().toString());
+                Log.i(TAG, "Auth username: " + Amplify.Auth.getCurrentUser().getUsername());
+
+                String str = Amplify.Auth.getCurrentUser().getUsername();
+
+                getAccountTypeFromAPIByName(str);
+
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                Log.i(TAG, "AccountData: " + AccountData);
+
+                if(AccountData.getType().equals("user")){
+                    Intent goToMain = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    startActivity(goToMain);
+                } else if (AccountData.getType().equals("restaurant")) {
+                    Intent goToMain = new Intent(SplashScreenActivity.this, RestaurantActivity.class);
+                    startActivity(goToMain);
+                }
+
+
             } else {
                 Log.i(TAG, "Auth:  no user " + Amplify.Auth.getCurrentUser());
                 Intent goToLogin = new Intent(SplashScreenActivity.this, LoginActivity.class);
@@ -84,5 +116,20 @@ public class SplashScreenActivity extends AppCompatActivity {
         } else {
             Log.i(TAG, "NET: net down");
         }
+    }
+
+    public void getAccountTypeFromAPIByName(String name) {
+        Amplify.API.query(
+            ModelQuery.list(Account.class, Account.USERNAME.contains(name)),
+            response -> {
+                for (Account account : response.getData()) {
+                    Log.i(TAG, "account type: " + account.getType());
+                    AccountData = account;
+                }
+            },
+            error -> {
+                Log.i(TAG, "Query failure", error);
+            }
+        );
     }
 }
