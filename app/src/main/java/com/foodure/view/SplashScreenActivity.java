@@ -72,8 +72,9 @@ public class SplashScreenActivity extends AppCompatActivity {
 
             if (isCurrentUser()) {
                 Log.i(TAG, "Auth: " + Amplify.Auth.getCurrentUser().toString());
-                Intent goToMain = new Intent(SplashScreenActivity.this, MainActivity.class);
-                startActivity(goToMain);
+//                Intent goToMain = new Intent(SplashScreenActivity.this, MainActivity.class);
+//                startActivity(goToMain);
+              Log.i(TAG, "config:>>> " + Amplify.Auth.getCurrentUser().toString());
             } else {
                 Log.i(TAG, "Auth:  no user " + Amplify.Auth.getCurrentUser());
                 Intent goToLogin = new Intent(SplashScreenActivity.this, LoginActivity.class);

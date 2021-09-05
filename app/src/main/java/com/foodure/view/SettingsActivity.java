@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.foodure.R;
 
@@ -18,5 +17,14 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         Objects.requireNonNull(getSupportActionBar()).hide();
+
+        ImageView back = findViewById(R.id.back_settings);
+
+        back.setOnClickListener(v -> back());
+    }
+
+    public void back(){
+        Intent goToMain = new Intent(SettingsActivity.this, MainActivity.class);
+        startActivity(goToMain);
     }
 }

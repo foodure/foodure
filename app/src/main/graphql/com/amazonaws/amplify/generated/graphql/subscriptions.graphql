@@ -1,10 +1,78 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateAdmin {
-  onCreateAdmin {
+subscription OnCreateAccount {
+  onCreateAccount {
     id
+    email
+    firstName
+    secondName
+    username
+    maritalStatus
+    age
+    location
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateAccount {
+  onUpdateAccount {
+    id
+    email
+    firstName
+    secondName
+    username
+    maritalStatus
+    age
+    location
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteAccount {
+  onDeleteAccount {
+    id
+    email
+    firstName
+    secondName
+    username
+    maritalStatus
+    age
+    location
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateRestaurant {
+  onCreateRestaurant {
+    id
+    email
     title
-    description
-    status
+    username
+    location
+    restaurantPost {
+      items {
+        id
+        foodID
+        orderID
+        type
+        quantity
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -12,12 +80,29 @@ subscription OnCreateAdmin {
     updatedAt
   }
 }
-subscription OnUpdateAdmin {
-  onUpdateAdmin {
+subscription OnUpdateRestaurant {
+  onUpdateRestaurant {
     id
+    email
     title
-    description
-    status
+    username
+    location
+    restaurantPost {
+      items {
+        id
+        foodID
+        orderID
+        type
+        quantity
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -25,12 +110,29 @@ subscription OnUpdateAdmin {
     updatedAt
   }
 }
-subscription OnDeleteAdmin {
-  onDeleteAdmin {
+subscription OnDeleteRestaurant {
+  onDeleteRestaurant {
     id
+    email
     title
-    description
-    status
+    username
+    location
+    restaurantPost {
+      items {
+        id
+        foodID
+        orderID
+        type
+        quantity
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -38,10 +140,43 @@ subscription OnDeleteAdmin {
     updatedAt
   }
 }
-subscription OnCreateNote {
-  onCreateNote {
+subscription OnCreateFoodPost {
+  onCreateFoodPost {
     id
-    content
+    foodID
+    orderID
+    type
+    quantity
+    restaurant {
+      id
+      email
+      title
+      username
+      location
+      restaurantPost {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    cart {
+      id
+      username
+      location
+      cartPosts {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -49,10 +184,43 @@ subscription OnCreateNote {
     updatedAt
   }
 }
-subscription OnUpdateNote {
-  onUpdateNote {
+subscription OnUpdateFoodPost {
+  onUpdateFoodPost {
     id
-    content
+    foodID
+    orderID
+    type
+    quantity
+    restaurant {
+      id
+      email
+      title
+      username
+      location
+      restaurantPost {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    cart {
+      id
+      username
+      location
+      cartPosts {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -60,10 +228,127 @@ subscription OnUpdateNote {
     updatedAt
   }
 }
-subscription OnDeleteNote {
-  onDeleteNote {
+subscription OnDeleteFoodPost {
+  onDeleteFoodPost {
     id
-    content
+    foodID
+    orderID
+    type
+    quantity
+    restaurant {
+      id
+      email
+      title
+      username
+      location
+      restaurantPost {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    cart {
+      id
+      username
+      location
+      cartPosts {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateCart {
+  onCreateCart {
+    id
+    username
+    location
+    cartPosts {
+      items {
+        id
+        foodID
+        orderID
+        type
+        quantity
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateCart {
+  onUpdateCart {
+    id
+    username
+    location
+    cartPosts {
+      items {
+        id
+        foodID
+        orderID
+        type
+        quantity
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteCart {
+  onDeleteCart {
+    id
+    username
+    location
+    cartPosts {
+      items {
+        id
+        foodID
+        orderID
+        type
+        quantity
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt

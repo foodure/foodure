@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.foodure.R;
 
@@ -18,5 +17,15 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         Objects.requireNonNull(getSupportActionBar()).hide();
+
+        ImageView back = findViewById(R.id.back_profile);
+
+        back.setOnClickListener(v -> back());
+
+    }
+
+    public void back(){
+        Intent goToMain = new Intent(ProfileActivity.this, MainActivity.class);
+        startActivity(goToMain);
     }
 }
