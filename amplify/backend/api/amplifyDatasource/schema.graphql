@@ -1,10 +1,64 @@
-type admin @model {
+type Account @model {
+  id: ID!
+  email: String!
+  firstName: String
+  secondName: String
+  userName: String!
+  maritalStatus: String!
+  age: Int
+  location : String!
+}
+
+type Restaurant @model {
+  id: ID!
+  email: String!
+  title: String!
+  userName: String!
+  resFoodPost: [FoodPost] @connection(keyName: "foodItem" , fields:["id"])
+  location : String!
+}
+
+type FoodPost @model
+@key(name: "foodItem", fields: ["foodID", "orderID"])
+@key(name: "orderPost", fields: ["orderID", "foodID"])
+{
+  id: ID!
+  orderID: ID!
+  foodID: ID!
+  type: String!
+  quantity: String!
+  restaurant: Restaurant! @connection(fields: ["foodId"])
+  cart: [Cart] @connection(fields: ["orderId"])
+}
+
+type Cart @model {
+  id: ID!
+  userName: String!
+  FoodPost: [FoodPost] @connection(keyName: "orderPost" , fields:["id"])
+  location : String!
+}
+
+type Post @model {
   id: ID!
   title: String!
-  description: String
-  status: String
+  editors: [PostEditor] @connection(keyName: "byPost", fields: ["id"])
 }
-type Note @model {
+
+# Create a join model and disable queries as you don't need them
+# and can query through Post.editors and User.posts
+type PostEditor
+@model(queries: null)
+@key(name: "byPost", fields: ["postID", "editorID"])
+@key(name: "byEditor", fields: ["editorID", "postID"]) {
   id: ID!
-  content: String!
+  postID: ID!
+  editorID: ID!
+  post: Post! @connection(fields: ["postID"])
+  editor: User! @connection(fields: ["editorID"])
+}
+
+type User @model {
+  id: ID!
+  username: String!
+  posts: [PostEditor] @connection(keyName: "byEditor", fields: ["id"])
 }
