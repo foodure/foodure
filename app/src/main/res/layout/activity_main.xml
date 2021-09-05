@@ -30,7 +30,7 @@
         android:id="@+id/personView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -41,12 +41,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="@string/homepage"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/personView"
-        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintEnd_toStartOf="@+id/logout_home"
+        app:layout_constraintHorizontal_bias="0.153"
         app:layout_constraintStart_toStartOf="@+id/topView"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,11 +56,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="username"
+        android:text="Porfile"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/personView"
-        app:layout_constraintHorizontal_bias="0.326"
+        app:layout_constraintHorizontal_bias="0.255"
         app:layout_constraintStart_toStartOf="@+id/topView"
         app:layout_constraintTop_toBottomOf="@+id/homePage" />
 
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="settings"
+        android:text="Settings"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/personView"
@@ -104,6 +104,18 @@
         app:layout_constraintTop_toBottomOf="@+id/profile_homePage"
         app:srcCompat="@drawable/ic_settings_24"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/logout_home"
+        android:layout_width="49dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/topView"
+        app:srcCompat="@drawable/ic_login_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

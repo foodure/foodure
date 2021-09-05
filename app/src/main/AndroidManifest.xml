@@ -19,10 +19,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Foodure">
         <activity
+            android:name=".view.RestaurantAddFoodActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.RestaurantActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.RestaurantProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.ProfileActivity"
-            android:exported="true"
-
-            />
+            android:exported="true" />
         <activity
             android:name=".view.SettingsActivity"
             android:exported="true" />

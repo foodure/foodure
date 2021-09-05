@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.RestaurantActivity">
+
+  <View
+      android:id="@+id/topView"
+      android:layout_width="0dp"
+      android:layout_height="150dp"
+      android:background="@color/cream_can"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <ImageView
+      android:id="@+id/waveView"
+      android:layout_width="411dp"
+      android:layout_height="390dp"
+      android:contentDescription="@string/wave"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_top_action_bar" />
+
+  <ImageView
+      android:id="@+id/personView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="60dp"
+      android:layout_marginEnd="32dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_home" />
+
+  <TextView
+      android:id="@+id/restaurantPage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="24dp"
+      android:text="Restaurant Page"
+      android:textColor="#FFFFFF"
+      android:textSize="24sp"
+      app:layout_constraintEnd_toStartOf="@+id/logout_home"
+      app:layout_constraintHorizontal_bias="0.153"
+      app:layout_constraintStart_toStartOf="@+id/topView"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+      android:id="@+id/username_restaurantPage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="20dp"
+      android:text="Profile"
+      android:textColor="#FFFFFF"
+      android:textSize="24sp"
+      app:layout_constraintEnd_toStartOf="@+id/personView"
+      app:layout_constraintHorizontal_bias="0.258"
+      app:layout_constraintStart_toStartOf="@+id/topView"
+      app:layout_constraintTop_toBottomOf="@+id/restaurantPage" />
+
+  <ImageView
+      android:id="@+id/profile_restaurantPage"
+      android:layout_width="35dp"
+      android:layout_height="31dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="20dp"
+      android:layout_marginEnd="16dp"
+      app:layout_constraintEnd_toStartOf="@+id/username_restaurantPage"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/restaurantPage"
+      app:srcCompat="@drawable/ic_person"
+      tools:ignore="MissingConstraints" />
+
+  <TextView
+      android:id="@+id/settings_restaurantPage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="16dp"
+      android:text="Settings"
+      android:textColor="#FFFFFF"
+      android:textSize="24sp"
+      app:layout_constraintEnd_toStartOf="@+id/personView"
+      app:layout_constraintHorizontal_bias="0.285"
+      app:layout_constraintStart_toStartOf="@+id/topView"
+      app:layout_constraintTop_toBottomOf="@+id/username_restaurantPage" />
+
+  <ImageView
+      android:id="@+id/settingsImg_restaurantPage"
+      android:layout_width="35dp"
+      android:layout_height="31dp"
+      android:layout_marginStart="12dp"
+      android:layout_marginTop="20dp"
+      app:layout_constraintEnd_toStartOf="@+id/settings_restaurantPage"
+      app:layout_constraintHorizontal_bias="0.444"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/profile_restaurantPage"
+      app:srcCompat="@drawable/ic_settings_24"
+      tools:ignore="MissingConstraints" />
+
+  <ImageView
+      android:id="@+id/logout_restaurantPage"
+      android:layout_width="49dp"
+      android:layout_height="43dp"
+      android:layout_marginTop="24dp"
+      android:layout_marginEnd="16dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.953"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/topView"
+      app:srcCompat="@drawable/ic_login_24" />
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:layout_width="match_parent"
+      android:layout_height="400dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginBottom="16dp"
+      app:layout_constraintBottom_toTopOf="@+id/addFood_restaurantPage"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/topView"
+      app:layout_constraintVertical_bias="1.0" />
+
+  <Button
+      android:id="@+id/addFood_restaurantPage"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="32dp"
+      android:layout_marginEnd="32dp"
+      android:layout_marginBottom="32dp"
+      android:background="@drawable/round_bg"
+      android:drawableStart="@drawable/ic_add_24"
+      android:padding="16dp"
+      android:text="add Food"
+      android:textColor="#FFFFFF"
+      android:textSize="16sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
