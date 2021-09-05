@@ -51,7 +51,7 @@ public class RestaurantActivity extends AppCompatActivity {
     }
 
     public void goToSettings(){
-        Intent goToSettings = new Intent(RestaurantActivity.this, SettingsActivity.class);
+        Intent goToSettings = new Intent(RestaurantActivity.this, RestaurantSettingsActivity.class);
         startActivity(goToSettings);
     }
 

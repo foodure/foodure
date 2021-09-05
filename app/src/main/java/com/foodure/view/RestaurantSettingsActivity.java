@@ -10,21 +10,22 @@ import com.foodure.R;
 
 import java.util.Objects;
 
-public class RestaurantProfileActivity extends AppCompatActivity {
+public class RestaurantSettingsActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_restaurant_profile);
+    setContentView(R.layout.activity_restaurant_settings);
     Objects.requireNonNull(getSupportActionBar()).hide();
 
-    ImageView back = findViewById(R.id.back_restaurantProfilePage);
+    ImageView back = findViewById(R.id.back_restaurantSettingsPage);
 
     back.setOnClickListener(v -> back());
   }
 
-  public void back() {
-    Intent goToMain = new Intent(RestaurantProfileActivity.this, RestaurantActivity.class);
+  public void back(){
+    Intent goToMain = new Intent(RestaurantSettingsActivity.this, RestaurantActivity.class);
     startActivity(goToMain);
   }
+
 }
