@@ -5,8 +5,6 @@ mutation CreateAccount(
 ) {
   createAccount(input: $input, condition: $condition) {
     id
-    firstName
-    secondName
     username
     location
     type
@@ -23,8 +21,6 @@ mutation UpdateAccount(
 ) {
   updateAccount(input: $input, condition: $condition) {
     id
-    firstName
-    secondName
     username
     location
     type
@@ -41,8 +37,6 @@ mutation DeleteAccount(
 ) {
   deleteAccount(input: $input, condition: $condition) {
     id
-    firstName
-    secondName
     username
     location
     type

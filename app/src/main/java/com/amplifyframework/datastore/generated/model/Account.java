@@ -21,14 +21,10 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 @ModelConfig(pluralName = "Accounts")
 public final class Account implements Model {
   public static final QueryField ID = field("Account", "id");
-  public static final QueryField FIRST_NAME = field("Account", "firstName");
-  public static final QueryField SECOND_NAME = field("Account", "secondName");
   public static final QueryField USERNAME = field("Account", "username");
   public static final QueryField LOCATION = field("Account", "location");
   public static final QueryField TYPE = field("Account", "type");
   private final @ModelField(targetType="ID", isRequired = true) String id;
-  private final @ModelField(targetType="String") String firstName;
-  private final @ModelField(targetType="String") String secondName;
   private final @ModelField(targetType="String", isRequired = true) String username;
   private final @ModelField(targetType="String", isRequired = true) String location;
   private final @ModelField(targetType="String", isRequired = true) String type;
@@ -36,14 +32,6 @@ public final class Account implements Model {
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
       return id;
-  }
-  
-  public String getFirstName() {
-      return firstName;
-  }
-  
-  public String getSecondName() {
-      return secondName;
   }
   
   public String getUsername() {
@@ -66,10 +54,8 @@ public final class Account implements Model {
       return updatedAt;
   }
   
-  private Account(String id, String firstName, String secondName, String username, String location, String type) {
+  private Account(String id, String username, String location, String type) {
     this.id = id;
-    this.firstName = firstName;
-    this.secondName = secondName;
     this.username = username;
     this.location = location;
     this.type = type;
@@ -84,8 +70,6 @@ public final class Account implements Model {
       } else {
       Account account = (Account) obj;
       return ObjectsCompat.equals(getId(), account.getId()) &&
-              ObjectsCompat.equals(getFirstName(), account.getFirstName()) &&
-              ObjectsCompat.equals(getSecondName(), account.getSecondName()) &&
               ObjectsCompat.equals(getUsername(), account.getUsername()) &&
               ObjectsCompat.equals(getLocation(), account.getLocation()) &&
               ObjectsCompat.equals(getType(), account.getType()) &&
@@ -98,8 +82,6 @@ public final class Account implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
-      .append(getFirstName())
-      .append(getSecondName())
       .append(getUsername())
       .append(getLocation())
       .append(getType())
@@ -114,8 +96,6 @@ public final class Account implements Model {
     return new StringBuilder()
       .append("Account {")
       .append("id=" + String.valueOf(getId()) + ", ")
-      .append("firstName=" + String.valueOf(getFirstName()) + ", ")
-      .append("secondName=" + String.valueOf(getSecondName()) + ", ")
       .append("username=" + String.valueOf(getUsername()) + ", ")
       .append("location=" + String.valueOf(getLocation()) + ", ")
       .append("type=" + String.valueOf(getType()) + ", ")
@@ -152,16 +132,12 @@ public final class Account implements Model {
       id,
       null,
       null,
-      null,
-      null,
       null
     );
   }
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
-      firstName,
-      secondName,
       username,
       location,
       type);
@@ -184,8 +160,6 @@ public final class Account implements Model {
   public interface BuildStep {
     Account build();
     BuildStep id(String id) throws IllegalArgumentException;
-    BuildStep firstName(String firstName);
-    BuildStep secondName(String secondName);
   }
   
 
@@ -194,16 +168,12 @@ public final class Account implements Model {
     private String username;
     private String location;
     private String type;
-    private String firstName;
-    private String secondName;
     @Override
      public Account build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
         
         return new Account(
           id,
-          firstName,
-          secondName,
           username,
           location,
           type);
@@ -230,18 +200,6 @@ public final class Account implements Model {
         return this;
     }
     
-    @Override
-     public BuildStep firstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-    
-    @Override
-     public BuildStep secondName(String secondName) {
-        this.secondName = secondName;
-        return this;
-    }
-    
     /** 
      * @param id id
      * @return Current Builder instance, for fluent method chaining
@@ -254,13 +212,11 @@ public final class Account implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String firstName, String secondName, String username, String location, String type) {
+    private CopyOfBuilder(String id, String username, String location, String type) {
       super.id(id);
       super.username(username)
         .location(location)
-        .type(type)
-        .firstName(firstName)
-        .secondName(secondName);
+        .type(type);
     }
     
     @Override
@@ -276,16 +232,6 @@ public final class Account implements Model {
     @Override
      public CopyOfBuilder type(String type) {
       return (CopyOfBuilder) super.type(type);
-    }
-    
-    @Override
-     public CopyOfBuilder firstName(String firstName) {
-      return (CopyOfBuilder) super.firstName(firstName);
-    }
-    
-    @Override
-     public CopyOfBuilder secondName(String secondName) {
-      return (CopyOfBuilder) super.secondName(secondName);
     }
   }
   

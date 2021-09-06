@@ -1,7 +1,5 @@
 type Account @model {
   id: ID!
-  firstName: String
-  secondName: String
   username: String!
   location: String!
   type: String!

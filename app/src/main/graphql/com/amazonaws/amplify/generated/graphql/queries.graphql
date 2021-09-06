@@ -13,8 +13,6 @@ query SyncAccounts(
   ) {
     items {
       id
-      firstName
-      secondName
       username
       location
       type
@@ -31,8 +29,6 @@ query SyncAccounts(
 query GetAccount($id: ID!) {
   getAccount(id: $id) {
     id
-    firstName
-    secondName
     username
     location
     type
@@ -51,8 +47,6 @@ query ListAccounts(
   listAccounts(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      firstName
-      secondName
       username
       location
       type
