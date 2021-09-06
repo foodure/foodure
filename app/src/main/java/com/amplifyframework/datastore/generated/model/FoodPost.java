@@ -20,39 +20,44 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 /** This is an auto generated class representing the FoodPost type in your schema. */
 @SuppressWarnings("all")
 @ModelConfig(pluralName = "FoodPosts")
-@Index(name = "foodItem", fields = {"foodID","orderID"})
-@Index(name = "orderPost", fields = {"orderID","foodID"})
+@Index(name = "foodItem", fields = {"foodID"})
 public final class FoodPost implements Model {
   public static final QueryField ID = field("FoodPost", "id");
-  public static final QueryField TYPE = field("FoodPost", "type");
+  public static final QueryField TITLE = field("FoodPost", "title");
   public static final QueryField QUANTITY = field("FoodPost", "quantity");
+  public static final QueryField TYPE = field("FoodPost", "type");
+  public static final QueryField LOCATION = field("FoodPost", "location");
   public static final QueryField RESTAURANT = field("FoodPost", "foodID");
-  public static final QueryField CART = field("FoodPost", "orderID");
   private final @ModelField(targetType="ID", isRequired = true) String id;
-  private final @ModelField(targetType="String", isRequired = true) String type;
+  private final @ModelField(targetType="String", isRequired = true) String title;
   private final @ModelField(targetType="String", isRequired = true) String quantity;
+  private final @ModelField(targetType="String", isRequired = true) String type;
+  private final @ModelField(targetType="String", isRequired = true) String location;
   private final @ModelField(targetType="Restaurant", isRequired = true) @BelongsTo(targetName = "foodID", type = Restaurant.class) Restaurant restaurant;
-  private final @ModelField(targetType="Cart") @BelongsTo(targetName = "orderID", type = Cart.class) Cart cart;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
       return id;
   }
   
-  public String getType() {
-      return type;
+  public String getTitle() {
+      return title;
   }
   
   public String getQuantity() {
       return quantity;
   }
   
-  public Restaurant getRestaurant() {
-      return restaurant;
+  public String getType() {
+      return type;
   }
   
-  public Cart getCart() {
-      return cart;
+  public String getLocation() {
+      return location;
+  }
+  
+  public Restaurant getRestaurant() {
+      return restaurant;
   }
   
   public Temporal.DateTime getCreatedAt() {
@@ -63,12 +68,13 @@ public final class FoodPost implements Model {
       return updatedAt;
   }
   
-  private FoodPost(String id, String type, String quantity, Restaurant restaurant, Cart cart) {
+  private FoodPost(String id, String title, String quantity, String type, String location, Restaurant restaurant) {
     this.id = id;
-    this.type = type;
+    this.title = title;
     this.quantity = quantity;
+    this.type = type;
+    this.location = location;
     this.restaurant = restaurant;
-    this.cart = cart;
   }
   
   @Override
@@ -80,10 +86,11 @@ public final class FoodPost implements Model {
       } else {
       FoodPost foodPost = (FoodPost) obj;
       return ObjectsCompat.equals(getId(), foodPost.getId()) &&
-              ObjectsCompat.equals(getType(), foodPost.getType()) &&
+              ObjectsCompat.equals(getTitle(), foodPost.getTitle()) &&
               ObjectsCompat.equals(getQuantity(), foodPost.getQuantity()) &&
+              ObjectsCompat.equals(getType(), foodPost.getType()) &&
+              ObjectsCompat.equals(getLocation(), foodPost.getLocation()) &&
               ObjectsCompat.equals(getRestaurant(), foodPost.getRestaurant()) &&
-              ObjectsCompat.equals(getCart(), foodPost.getCart()) &&
               ObjectsCompat.equals(getCreatedAt(), foodPost.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), foodPost.getUpdatedAt());
       }
@@ -93,10 +100,11 @@ public final class FoodPost implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
-      .append(getType())
+      .append(getTitle())
       .append(getQuantity())
+      .append(getType())
+      .append(getLocation())
       .append(getRestaurant())
-      .append(getCart())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -108,17 +116,18 @@ public final class FoodPost implements Model {
     return new StringBuilder()
       .append("FoodPost {")
       .append("id=" + String.valueOf(getId()) + ", ")
-      .append("type=" + String.valueOf(getType()) + ", ")
+      .append("title=" + String.valueOf(getTitle()) + ", ")
       .append("quantity=" + String.valueOf(getQuantity()) + ", ")
+      .append("type=" + String.valueOf(getType()) + ", ")
+      .append("location=" + String.valueOf(getLocation()) + ", ")
       .append("restaurant=" + String.valueOf(getRestaurant()) + ", ")
-      .append("cart=" + String.valueOf(getCart()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
       .toString();
   }
   
-  public static TypeStep builder() {
+  public static TitleStep builder() {
       return new Builder();
   }
   
@@ -146,24 +155,36 @@ public final class FoodPost implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
-      type,
+      title,
       quantity,
-      restaurant,
-      cart);
+      type,
+      location,
+      restaurant);
   }
-  public interface TypeStep {
-    QuantityStep type(String type);
+  public interface TitleStep {
+    QuantityStep title(String title);
   }
   
 
   public interface QuantityStep {
-    RestaurantStep quantity(String quantity);
+    TypeStep quantity(String quantity);
+  }
+  
+
+  public interface TypeStep {
+    LocationStep type(String type);
+  }
+  
+
+  public interface LocationStep {
+    RestaurantStep location(String location);
   }
   
 
@@ -175,39 +196,54 @@ public final class FoodPost implements Model {
   public interface BuildStep {
     FoodPost build();
     BuildStep id(String id) throws IllegalArgumentException;
-    BuildStep cart(Cart cart);
   }
   
 
-  public static class Builder implements TypeStep, QuantityStep, RestaurantStep, BuildStep {
+  public static class Builder implements TitleStep, QuantityStep, TypeStep, LocationStep, RestaurantStep, BuildStep {
     private String id;
-    private String type;
+    private String title;
     private String quantity;
+    private String type;
+    private String location;
     private Restaurant restaurant;
-    private Cart cart;
     @Override
      public FoodPost build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
         
         return new FoodPost(
           id,
-          type,
+          title,
           quantity,
-          restaurant,
-          cart);
+          type,
+          location,
+          restaurant);
     }
     
     @Override
-     public QuantityStep type(String type) {
+     public QuantityStep title(String title) {
+        Objects.requireNonNull(title);
+        this.title = title;
+        return this;
+    }
+    
+    @Override
+     public TypeStep quantity(String quantity) {
+        Objects.requireNonNull(quantity);
+        this.quantity = quantity;
+        return this;
+    }
+    
+    @Override
+     public LocationStep type(String type) {
         Objects.requireNonNull(type);
         this.type = type;
         return this;
     }
     
     @Override
-     public RestaurantStep quantity(String quantity) {
-        Objects.requireNonNull(quantity);
-        this.quantity = quantity;
+     public RestaurantStep location(String location) {
+        Objects.requireNonNull(location);
+        this.location = location;
         return this;
     }
     
@@ -215,12 +251,6 @@ public final class FoodPost implements Model {
      public BuildStep restaurant(Restaurant restaurant) {
         Objects.requireNonNull(restaurant);
         this.restaurant = restaurant;
-        return this;
-    }
-    
-    @Override
-     public BuildStep cart(Cart cart) {
-        this.cart = cart;
         return this;
     }
     
@@ -236,17 +266,18 @@ public final class FoodPost implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String type, String quantity, Restaurant restaurant, Cart cart) {
+    private CopyOfBuilder(String id, String title, String quantity, String type, String location, Restaurant restaurant) {
       super.id(id);
-      super.type(type)
+      super.title(title)
         .quantity(quantity)
-        .restaurant(restaurant)
-        .cart(cart);
+        .type(type)
+        .location(location)
+        .restaurant(restaurant);
     }
     
     @Override
-     public CopyOfBuilder type(String type) {
-      return (CopyOfBuilder) super.type(type);
+     public CopyOfBuilder title(String title) {
+      return (CopyOfBuilder) super.title(title);
     }
     
     @Override
@@ -255,13 +286,18 @@ public final class FoodPost implements Model {
     }
     
     @Override
-     public CopyOfBuilder restaurant(Restaurant restaurant) {
-      return (CopyOfBuilder) super.restaurant(restaurant);
+     public CopyOfBuilder type(String type) {
+      return (CopyOfBuilder) super.type(type);
     }
     
     @Override
-     public CopyOfBuilder cart(Cart cart) {
-      return (CopyOfBuilder) super.cart(cart);
+     public CopyOfBuilder location(String location) {
+      return (CopyOfBuilder) super.location(location);
+    }
+    
+    @Override
+     public CopyOfBuilder restaurant(Restaurant restaurant) {
+      return (CopyOfBuilder) super.restaurant(restaurant);
     }
   }
   

@@ -15,45 +15,58 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/title_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="title"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+      <TextView
+        android:id="@+id/restaurantLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="restaurantLabel"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/body_label"
+            android:id="@+id/foodLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/title_label"
+            android:layout_below="@+id/restaurantLabel"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="body" />
+            android:text="foodLabel" />
 
         <TextView
-            android:id="@+id/status_label"
+            android:id="@+id/quantityLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/body_label"
+            android:layout_below="@+id/foodLabel"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="status" />
+            android:text="quantityLabel" />
 
         <TextView
-            android:id="@+id/delete"
-            android:layout_width="80dp"
+            android:id="@+id/locationLabel"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/status_label"
+            android:layout_below="@+id/quantityLabel"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="locationLabel" />
+
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/locationLabel"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
+            android:background="@drawable/round_bg_dark"
             android:drawableStart="@drawable/ic_trash_24"
+            android:padding="10dp"
             android:text="Delete"
             android:textColor="#D32F2F" />
 
