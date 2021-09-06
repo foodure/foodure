@@ -60,9 +60,10 @@ mutation CreateRestaurant(
       items {
         id
         foodID
-        orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt
@@ -92,9 +93,10 @@ mutation UpdateRestaurant(
       items {
         id
         foodID
-        orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt
@@ -124,9 +126,10 @@ mutation DeleteRestaurant(
       items {
         id
         foodID
-        orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt
@@ -150,29 +153,16 @@ mutation CreateFoodPost(
   createFoodPost(input: $input, condition: $condition) {
     id
     foodID
-    orderID
-    type
+    title
     quantity
+    type
+    location
     restaurant {
       id
       title
       username
       location
       restaurantPost {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    cart {
-      id
-      username
-      location
-      cartPosts {
         nextToken
         startedAt
       }
@@ -196,29 +186,16 @@ mutation UpdateFoodPost(
   updateFoodPost(input: $input, condition: $condition) {
     id
     foodID
-    orderID
-    type
+    title
     quantity
+    type
+    location
     restaurant {
       id
       title
       username
       location
       restaurantPost {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    cart {
-      id
-      username
-      location
-      cartPosts {
         nextToken
         startedAt
       }
@@ -242,29 +219,16 @@ mutation DeleteFoodPost(
   deleteFoodPost(input: $input, condition: $condition) {
     id
     foodID
-    orderID
-    type
+    title
     quantity
+    type
+    location
     restaurant {
       id
       title
       username
       location
       restaurantPost {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    cart {
-      id
-      username
-      location
-      cartPosts {
         nextToken
         startedAt
       }
@@ -289,22 +253,6 @@ mutation CreateCart(
     id
     username
     location
-    cartPosts {
-      items {
-        id
-        foodID
-        orderID
-        type
-        quantity
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
     _version
     _deleted
     _lastChangedAt
@@ -320,22 +268,6 @@ mutation UpdateCart(
     id
     username
     location
-    cartPosts {
-      items {
-        id
-        foodID
-        orderID
-        type
-        quantity
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
     _version
     _deleted
     _lastChangedAt
@@ -351,22 +283,6 @@ mutation DeleteCart(
     id
     username
     location
-    cartPosts {
-      items {
-        id
-        foodID
-        orderID
-        type
-        quantity
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
     _version
     _deleted
     _lastChangedAt

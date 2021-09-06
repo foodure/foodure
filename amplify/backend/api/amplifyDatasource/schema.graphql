@@ -16,21 +16,21 @@ type Restaurant @model {
 # Create a join model and disable queries as you don't need them
 # and can query through Post.editors and User.posts
 type FoodPost @model
-@key(name: "foodItem", fields: ["foodID", "orderID"])
-@key(name: "orderPost", fields: ["orderID", "foodID"])
+@key(name: "foodItem", fields: ["foodID"])
+
 {
   id: ID!
   foodID: ID!
-  orderID: ID!
-  type: String!
+  title: String!
   quantity: String!
+  type: String!
+  location : String!
   restaurant: Restaurant! @connection(fields: ["foodID"])
-  cart: Cart @connection(fields: ["orderID"])
+
 }
 
 type Cart @model {
   id: ID!
   username: String!
   location : String!
-  cartPosts: [FoodPost] @connection(keyName: "orderPost", fields: ["id"])
 }
