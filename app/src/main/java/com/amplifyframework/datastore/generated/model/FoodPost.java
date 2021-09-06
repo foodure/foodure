@@ -20,7 +20,8 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 /** This is an auto generated class representing the FoodPost type in your schema. */
 @SuppressWarnings("all")
 @ModelConfig(pluralName = "FoodPosts")
-@Index(name = "foodItem", fields = {"foodID"})
+@Index(name = "foodItem", fields = {"foodID","orderID"})
+@Index(name = "orderPost", fields = {"orderID","foodID"})
 public final class FoodPost implements Model {
   public static final QueryField ID = field("FoodPost", "id");
   public static final QueryField TITLE = field("FoodPost", "title");
@@ -28,12 +29,14 @@ public final class FoodPost implements Model {
   public static final QueryField TYPE = field("FoodPost", "type");
   public static final QueryField LOCATION = field("FoodPost", "location");
   public static final QueryField RESTAURANT = field("FoodPost", "foodID");
+  public static final QueryField CART = field("FoodPost", "orderID");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String title;
   private final @ModelField(targetType="String", isRequired = true) String quantity;
   private final @ModelField(targetType="String", isRequired = true) String type;
   private final @ModelField(targetType="String", isRequired = true) String location;
   private final @ModelField(targetType="Restaurant", isRequired = true) @BelongsTo(targetName = "foodID", type = Restaurant.class) Restaurant restaurant;
+  private final @ModelField(targetType="Cart") @BelongsTo(targetName = "orderID", type = Cart.class) Cart cart;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
@@ -60,6 +63,10 @@ public final class FoodPost implements Model {
       return restaurant;
   }
   
+  public Cart getCart() {
+      return cart;
+  }
+  
   public Temporal.DateTime getCreatedAt() {
       return createdAt;
   }
@@ -68,13 +75,14 @@ public final class FoodPost implements Model {
       return updatedAt;
   }
   
-  private FoodPost(String id, String title, String quantity, String type, String location, Restaurant restaurant) {
+  private FoodPost(String id, String title, String quantity, String type, String location, Restaurant restaurant, Cart cart) {
     this.id = id;
     this.title = title;
     this.quantity = quantity;
     this.type = type;
     this.location = location;
     this.restaurant = restaurant;
+    this.cart = cart;
   }
   
   @Override
@@ -91,6 +99,7 @@ public final class FoodPost implements Model {
               ObjectsCompat.equals(getType(), foodPost.getType()) &&
               ObjectsCompat.equals(getLocation(), foodPost.getLocation()) &&
               ObjectsCompat.equals(getRestaurant(), foodPost.getRestaurant()) &&
+              ObjectsCompat.equals(getCart(), foodPost.getCart()) &&
               ObjectsCompat.equals(getCreatedAt(), foodPost.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), foodPost.getUpdatedAt());
       }
@@ -105,6 +114,7 @@ public final class FoodPost implements Model {
       .append(getType())
       .append(getLocation())
       .append(getRestaurant())
+      .append(getCart())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -121,6 +131,7 @@ public final class FoodPost implements Model {
       .append("type=" + String.valueOf(getType()) + ", ")
       .append("location=" + String.valueOf(getLocation()) + ", ")
       .append("restaurant=" + String.valueOf(getRestaurant()) + ", ")
+      .append("cart=" + String.valueOf(getCart()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
@@ -156,6 +167,7 @@ public final class FoodPost implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
@@ -166,7 +178,8 @@ public final class FoodPost implements Model {
       quantity,
       type,
       location,
-      restaurant);
+      restaurant,
+      cart);
   }
   public interface TitleStep {
     QuantityStep title(String title);
@@ -196,6 +209,7 @@ public final class FoodPost implements Model {
   public interface BuildStep {
     FoodPost build();
     BuildStep id(String id) throws IllegalArgumentException;
+    BuildStep cart(Cart cart);
   }
   
 
@@ -206,6 +220,7 @@ public final class FoodPost implements Model {
     private String type;
     private String location;
     private Restaurant restaurant;
+    private Cart cart;
     @Override
      public FoodPost build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -216,7 +231,8 @@ public final class FoodPost implements Model {
           quantity,
           type,
           location,
-          restaurant);
+          restaurant,
+          cart);
     }
     
     @Override
@@ -254,6 +270,12 @@ public final class FoodPost implements Model {
         return this;
     }
     
+    @Override
+     public BuildStep cart(Cart cart) {
+        this.cart = cart;
+        return this;
+    }
+    
     /** 
      * WARNING: Do not set ID when creating a new object. Leave this blank and one will be auto generated for you.
      * This should only be set when referring to an already existing object.
@@ -277,13 +299,14 @@ public final class FoodPost implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String title, String quantity, String type, String location, Restaurant restaurant) {
+    private CopyOfBuilder(String id, String title, String quantity, String type, String location, Restaurant restaurant, Cart cart) {
       super.id(id);
       super.title(title)
         .quantity(quantity)
         .type(type)
         .location(location)
-        .restaurant(restaurant);
+        .restaurant(restaurant)
+        .cart(cart);
     }
     
     @Override
@@ -309,6 +332,11 @@ public final class FoodPost implements Model {
     @Override
      public CopyOfBuilder restaurant(Restaurant restaurant) {
       return (CopyOfBuilder) super.restaurant(restaurant);
+    }
+    
+    @Override
+     public CopyOfBuilder cart(Cart cart) {
+      return (CopyOfBuilder) super.cart(cart);
     }
   }
   

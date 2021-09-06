@@ -101,6 +101,7 @@ query GetRestaurant($id: ID!) {
       items {
         id
         foodID
+        orderID
         title
         quantity
         type
@@ -161,6 +162,7 @@ query SyncFoodPosts(
     items {
       id
       foodID
+      orderID
       title
       quantity
       type
@@ -168,6 +170,16 @@ query SyncFoodPosts(
       restaurant {
         id
         title
+        username
+        location
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      cart {
+        id
         username
         location
         _version
@@ -190,6 +202,7 @@ query GetFoodPost($id: ID!) {
   getFoodPost(id: $id) {
     id
     foodID
+    orderID
     title
     quantity
     type
@@ -200,6 +213,20 @@ query GetFoodPost($id: ID!) {
       username
       location
       restaurantPost {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    cart {
+      id
+      username
+      location
+      cartPosts {
         nextToken
         startedAt
       }
@@ -225,6 +252,7 @@ query ListFoodPosts(
     items {
       id
       foodID
+      orderID
       title
       quantity
       type
@@ -232,6 +260,16 @@ query ListFoodPosts(
       restaurant {
         id
         title
+        username
+        location
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      cart {
+        id
         username
         location
         _version
@@ -266,6 +304,10 @@ query SyncCarts(
       id
       username
       location
+      cartPosts {
+        nextToken
+        startedAt
+      }
       _version
       _deleted
       _lastChangedAt
@@ -281,6 +323,24 @@ query GetCart($id: ID!) {
     id
     username
     location
+    cartPosts {
+      items {
+        id
+        foodID
+        orderID
+        title
+        quantity
+        type
+        location
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -298,6 +358,10 @@ query ListCarts(
       id
       username
       location
+      cartPosts {
+        nextToken
+        startedAt
+      }
       _version
       _deleted
       _lastChangedAt

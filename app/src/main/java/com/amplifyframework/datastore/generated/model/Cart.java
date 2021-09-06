@@ -1,5 +1,6 @@
 package com.amplifyframework.datastore.generated.model;
 
+import com.amplifyframework.core.model.annotations.HasMany;
 import com.amplifyframework.core.model.temporal.Temporal;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public final class Cart implements Model {
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String username;
   private final @ModelField(targetType="String", isRequired = true) String location;
+  private final @ModelField(targetType="FoodPost") @HasMany(associatedWith = "cart", type = FoodPost.class) List<FoodPost> cartPosts = null;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
@@ -38,6 +40,10 @@ public final class Cart implements Model {
   
   public String getLocation() {
       return location;
+  }
+  
+  public List<FoodPost> getCartPosts() {
+      return cartPosts;
   }
   
   public Temporal.DateTime getCreatedAt() {
