@@ -2,8 +2,6 @@
 subscription OnCreateAccount {
   onCreateAccount {
     id
-    firstName
-    secondName
     username
     location
     type
@@ -17,8 +15,6 @@ subscription OnCreateAccount {
 subscription OnUpdateAccount {
   onUpdateAccount {
     id
-    firstName
-    secondName
     username
     location
     type
@@ -32,8 +28,6 @@ subscription OnUpdateAccount {
 subscription OnDeleteAccount {
   onDeleteAccount {
     id
-    firstName
-    secondName
     username
     location
     type
