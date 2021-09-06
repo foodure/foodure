@@ -12,15 +12,15 @@
       "AmplifyAppId": "d38n94wt12s7kn"
     },
     "categories": {
-      "auth": {
-        "fooduredaacce13": {}
-      },
       "notifications": {
         "Pinpoint": {
           "Name": "foodureNkZBl-dev",
           "Id": "6e7c17f1d39b407e93e9f20b367db124",
           "Region": "us-east-1"
         }
+      },
+      "auth": {
+        "foodure06cce10a": {}
       }
     }
   }

@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "fooduredaacce13_identitypool_daacce13",
-    "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "foodurdaacce13",
-    "userPoolName": "fooduredaacce13_userpool_daacce13",
+    "identityPoolName": "foodure06cce10a_identitypool_06cce10a",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "foodur06cce10a",
+    "userPoolName": "foodure06cce10a_userpool_06cce10a",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -33,10 +33,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "foodurdaacce13_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "foodur06cce10a_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "daacce13",
-    "resourceName": "fooduredaacce13",
+    "sharedId": "06cce10a",
+    "resourceName": "foodure06cce10a",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [

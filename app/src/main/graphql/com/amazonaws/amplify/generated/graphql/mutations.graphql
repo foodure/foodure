@@ -5,13 +5,9 @@ mutation CreateAccount(
 ) {
   createAccount(input: $input, condition: $condition) {
     id
-    email
-    firstName
-    secondName
     username
-    maritalStatus
-    age
     location
+    type
     _version
     _deleted
     _lastChangedAt
@@ -25,13 +21,9 @@ mutation UpdateAccount(
 ) {
   updateAccount(input: $input, condition: $condition) {
     id
-    email
-    firstName
-    secondName
     username
-    maritalStatus
-    age
     location
+    type
     _version
     _deleted
     _lastChangedAt
@@ -45,13 +37,9 @@ mutation DeleteAccount(
 ) {
   deleteAccount(input: $input, condition: $condition) {
     id
-    email
-    firstName
-    secondName
     username
-    maritalStatus
-    age
     location
+    type
     _version
     _deleted
     _lastChangedAt

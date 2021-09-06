@@ -21,53 +21,29 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 @ModelConfig(pluralName = "Accounts")
 public final class Account implements Model {
   public static final QueryField ID = field("Account", "id");
-  public static final QueryField EMAIL = field("Account", "email");
-  public static final QueryField FIRST_NAME = field("Account", "firstName");
-  public static final QueryField SECOND_NAME = field("Account", "secondName");
   public static final QueryField USERNAME = field("Account", "username");
-  public static final QueryField MARITAL_STATUS = field("Account", "maritalStatus");
-  public static final QueryField AGE = field("Account", "age");
   public static final QueryField LOCATION = field("Account", "location");
+  public static final QueryField TYPE = field("Account", "type");
   private final @ModelField(targetType="ID", isRequired = true) String id;
-  private final @ModelField(targetType="String", isRequired = true) String email;
-  private final @ModelField(targetType="String") String firstName;
-  private final @ModelField(targetType="String") String secondName;
   private final @ModelField(targetType="String", isRequired = true) String username;
-  private final @ModelField(targetType="String", isRequired = true) String maritalStatus;
-  private final @ModelField(targetType="Int") Integer age;
   private final @ModelField(targetType="String", isRequired = true) String location;
+  private final @ModelField(targetType="String", isRequired = true) String type;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
       return id;
   }
   
-  public String getEmail() {
-      return email;
-  }
-  
-  public String getFirstName() {
-      return firstName;
-  }
-  
-  public String getSecondName() {
-      return secondName;
-  }
-  
   public String getUsername() {
       return username;
   }
   
-  public String getMaritalStatus() {
-      return maritalStatus;
-  }
-  
-  public Integer getAge() {
-      return age;
-  }
-  
   public String getLocation() {
       return location;
+  }
+  
+  public String getType() {
+      return type;
   }
   
   public Temporal.DateTime getCreatedAt() {
@@ -78,15 +54,11 @@ public final class Account implements Model {
       return updatedAt;
   }
   
-  private Account(String id, String email, String firstName, String secondName, String username, String maritalStatus, Integer age, String location) {
+  private Account(String id, String username, String location, String type) {
     this.id = id;
-    this.email = email;
-    this.firstName = firstName;
-    this.secondName = secondName;
     this.username = username;
-    this.maritalStatus = maritalStatus;
-    this.age = age;
     this.location = location;
+    this.type = type;
   }
   
   @Override
@@ -98,13 +70,9 @@ public final class Account implements Model {
       } else {
       Account account = (Account) obj;
       return ObjectsCompat.equals(getId(), account.getId()) &&
-              ObjectsCompat.equals(getEmail(), account.getEmail()) &&
-              ObjectsCompat.equals(getFirstName(), account.getFirstName()) &&
-              ObjectsCompat.equals(getSecondName(), account.getSecondName()) &&
               ObjectsCompat.equals(getUsername(), account.getUsername()) &&
-              ObjectsCompat.equals(getMaritalStatus(), account.getMaritalStatus()) &&
-              ObjectsCompat.equals(getAge(), account.getAge()) &&
               ObjectsCompat.equals(getLocation(), account.getLocation()) &&
+              ObjectsCompat.equals(getType(), account.getType()) &&
               ObjectsCompat.equals(getCreatedAt(), account.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), account.getUpdatedAt());
       }
@@ -114,13 +82,9 @@ public final class Account implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
-      .append(getEmail())
-      .append(getFirstName())
-      .append(getSecondName())
       .append(getUsername())
-      .append(getMaritalStatus())
-      .append(getAge())
       .append(getLocation())
+      .append(getType())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -132,20 +96,16 @@ public final class Account implements Model {
     return new StringBuilder()
       .append("Account {")
       .append("id=" + String.valueOf(getId()) + ", ")
-      .append("email=" + String.valueOf(getEmail()) + ", ")
-      .append("firstName=" + String.valueOf(getFirstName()) + ", ")
-      .append("secondName=" + String.valueOf(getSecondName()) + ", ")
       .append("username=" + String.valueOf(getUsername()) + ", ")
-      .append("maritalStatus=" + String.valueOf(getMaritalStatus()) + ", ")
-      .append("age=" + String.valueOf(getAge()) + ", ")
       .append("location=" + String.valueOf(getLocation()) + ", ")
+      .append("type=" + String.valueOf(getType()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
       .toString();
   }
   
-  public static EmailStep builder() {
+  public static UsernameStep builder() {
       return new Builder();
   }
   
@@ -172,120 +132,71 @@ public final class Account implements Model {
       id,
       null,
       null,
-      null,
-      null,
-      null,
-      null,
       null
     );
   }
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
-      email,
-      firstName,
-      secondName,
       username,
-      maritalStatus,
-      age,
-      location);
+      location,
+      type);
   }
-  public interface EmailStep {
-    UsernameStep email(String email);
-  }
-  
-
   public interface UsernameStep {
-    MaritalStatusStep username(String username);
-  }
-  
-
-  public interface MaritalStatusStep {
-    LocationStep maritalStatus(String maritalStatus);
+    LocationStep username(String username);
   }
   
 
   public interface LocationStep {
-    BuildStep location(String location);
+    TypeStep location(String location);
+  }
+  
+
+  public interface TypeStep {
+    BuildStep type(String type);
   }
   
 
   public interface BuildStep {
     Account build();
     BuildStep id(String id) throws IllegalArgumentException;
-    BuildStep firstName(String firstName);
-    BuildStep secondName(String secondName);
-    BuildStep age(Integer age);
   }
   
 
-  public static class Builder implements EmailStep, UsernameStep, MaritalStatusStep, LocationStep, BuildStep {
+  public static class Builder implements UsernameStep, LocationStep, TypeStep, BuildStep {
     private String id;
-    private String email;
     private String username;
-    private String maritalStatus;
     private String location;
-    private String firstName;
-    private String secondName;
-    private Integer age;
+    private String type;
     @Override
      public Account build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
         
         return new Account(
           id,
-          email,
-          firstName,
-          secondName,
           username,
-          maritalStatus,
-          age,
-          location);
+          location,
+          type);
     }
     
     @Override
-     public UsernameStep email(String email) {
-        Objects.requireNonNull(email);
-        this.email = email;
-        return this;
-    }
-    
-    @Override
-     public MaritalStatusStep username(String username) {
+     public LocationStep username(String username) {
         Objects.requireNonNull(username);
         this.username = username;
         return this;
     }
     
     @Override
-     public LocationStep maritalStatus(String maritalStatus) {
-        Objects.requireNonNull(maritalStatus);
-        this.maritalStatus = maritalStatus;
-        return this;
-    }
-    
-    @Override
-     public BuildStep location(String location) {
+     public TypeStep location(String location) {
         Objects.requireNonNull(location);
         this.location = location;
         return this;
     }
     
     @Override
-     public BuildStep firstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-    
-    @Override
-     public BuildStep secondName(String secondName) {
-        this.secondName = secondName;
-        return this;
-    }
-    
-    @Override
-     public BuildStep age(Integer age) {
-        this.age = age;
+     public BuildStep type(String type) {
+        Objects.requireNonNull(type);
+        this.type = type;
         return this;
     }
     
@@ -301,20 +212,11 @@ public final class Account implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String email, String firstName, String secondName, String username, String maritalStatus, Integer age, String location) {
+    private CopyOfBuilder(String id, String username, String location, String type) {
       super.id(id);
-      super.email(email)
-        .username(username)
-        .maritalStatus(maritalStatus)
+      super.username(username)
         .location(location)
-        .firstName(firstName)
-        .secondName(secondName)
-        .age(age);
-    }
-    
-    @Override
-     public CopyOfBuilder email(String email) {
-      return (CopyOfBuilder) super.email(email);
+        .type(type);
     }
     
     @Override
@@ -323,28 +225,13 @@ public final class Account implements Model {
     }
     
     @Override
-     public CopyOfBuilder maritalStatus(String maritalStatus) {
-      return (CopyOfBuilder) super.maritalStatus(maritalStatus);
-    }
-    
-    @Override
      public CopyOfBuilder location(String location) {
       return (CopyOfBuilder) super.location(location);
     }
     
     @Override
-     public CopyOfBuilder firstName(String firstName) {
-      return (CopyOfBuilder) super.firstName(firstName);
-    }
-    
-    @Override
-     public CopyOfBuilder secondName(String secondName) {
-      return (CopyOfBuilder) super.secondName(secondName);
-    }
-    
-    @Override
-     public CopyOfBuilder age(Integer age) {
-      return (CopyOfBuilder) super.age(age);
+     public CopyOfBuilder type(String type) {
+      return (CopyOfBuilder) super.type(type);
     }
   }
   

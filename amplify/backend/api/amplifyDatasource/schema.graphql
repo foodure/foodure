@@ -1,12 +1,8 @@
 type Account @model {
   id: ID!
-  email: String!
-  firstName: String
-  secondName: String
   username: String!
-  maritalStatus: String!
-  age: Int
-  location : String!
+  location: String!
+  type: String!
 }
 
 type Restaurant @model {

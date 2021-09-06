@@ -2,13 +2,9 @@
 subscription OnCreateAccount {
   onCreateAccount {
     id
-    email
-    firstName
-    secondName
     username
-    maritalStatus
-    age
     location
+    type
     _version
     _deleted
     _lastChangedAt
@@ -19,13 +15,9 @@ subscription OnCreateAccount {
 subscription OnUpdateAccount {
   onUpdateAccount {
     id
-    email
-    firstName
-    secondName
     username
-    maritalStatus
-    age
     location
+    type
     _version
     _deleted
     _lastChangedAt
@@ -36,13 +28,9 @@ subscription OnUpdateAccount {
 subscription OnDeleteAccount {
   onDeleteAccount {
     id
-    email
-    firstName
-    secondName
     username
-    maritalStatus
-    age
     location
+    type
     _version
     _deleted
     _lastChangedAt
