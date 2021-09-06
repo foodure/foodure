@@ -2,13 +2,9 @@
 subscription OnCreateAccount {
   onCreateAccount {
     id
-    email
-    firstName
-    secondName
     username
-    maritalStatus
-    age
     location
+    type
     _version
     _deleted
     _lastChangedAt
@@ -19,13 +15,9 @@ subscription OnCreateAccount {
 subscription OnUpdateAccount {
   onUpdateAccount {
     id
-    email
-    firstName
-    secondName
     username
-    maritalStatus
-    age
     location
+    type
     _version
     _deleted
     _lastChangedAt
@@ -36,13 +28,9 @@ subscription OnUpdateAccount {
 subscription OnDeleteAccount {
   onDeleteAccount {
     id
-    email
-    firstName
-    secondName
     username
-    maritalStatus
-    age
     location
+    type
     _version
     _deleted
     _lastChangedAt
@@ -53,7 +41,6 @@ subscription OnDeleteAccount {
 subscription OnCreateRestaurant {
   onCreateRestaurant {
     id
-    email
     title
     username
     location
@@ -83,7 +70,6 @@ subscription OnCreateRestaurant {
 subscription OnUpdateRestaurant {
   onUpdateRestaurant {
     id
-    email
     title
     username
     location
@@ -113,7 +99,6 @@ subscription OnUpdateRestaurant {
 subscription OnDeleteRestaurant {
   onDeleteRestaurant {
     id
-    email
     title
     username
     location
@@ -149,7 +134,6 @@ subscription OnCreateFoodPost {
     quantity
     restaurant {
       id
-      email
       title
       username
       location
@@ -193,7 +177,6 @@ subscription OnUpdateFoodPost {
     quantity
     restaurant {
       id
-      email
       title
       username
       location
@@ -237,7 +220,6 @@ subscription OnDeleteFoodPost {
     quantity
     restaurant {
       id
-      email
       title
       username
       location

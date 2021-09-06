@@ -18,13 +18,13 @@
         }
     },
     "auth": {
-        "fooduredaacce13": {
+        "foodure06cce10a": {
             "service": "Cognito",
             "providerPlugin": "awscloudformation",
             "dependsOn": [],
             "customAuth": false,
             "frontendAuthConfig": {
-                "loginMechanism": [
+                "loginMechanisms": [
                     "EMAIL",
                     "PREFERRED_USERNAME",
                     "PHONE_NUMBER"
@@ -56,5 +56,6 @@
                 "FCM"
             ]
         }
-    }
+    },
+    "function": {}
 }

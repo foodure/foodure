@@ -4,14 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amplifyframework.core.Amplify;
 import com.foodure.R;
 
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+
+  private static final String TAG = "MainActivity";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -25,21 +29,17 @@ public class MainActivity extends AppCompatActivity {
     TextView settingsBtn = findViewById(R.id.settings_homePage);
     ImageView settingsImg = findViewById(R.id.settingsImg_homePage);
 
-    usernameBtn.setOnClickListener(v -> {
-      goToProfile();
-    });
+    ImageView logout = findViewById(R.id.logout_home);
 
-    usernameImg.setOnClickListener(v -> {
-      goToProfile();
-    });
+    usernameBtn.setOnClickListener(v -> goToProfile());
 
-    settingsBtn.setOnClickListener(v -> {
-      goToSettings();
-    });
+    usernameImg.setOnClickListener(v -> goToProfile());
 
-    settingsImg.setOnClickListener(v -> {
-      goToSettings();
-    });
+    settingsBtn.setOnClickListener(v -> goToSettings());
+
+    settingsImg.setOnClickListener(v -> goToSettings());
+
+    logout.setOnClickListener(v -> logout());
 
   }
 
@@ -51,5 +51,16 @@ public class MainActivity extends AppCompatActivity {
   public void goToSettings(){
     Intent goToSettings = new Intent(MainActivity.this, SettingsActivity.class);
     startActivity(goToSettings);
+  }
+
+  public void logout() {
+    Amplify.Auth.signOut(
+        () -> {
+          Log.i("AuthQuickstart", "Signed out successfully");
+          Intent goToLogin = new Intent(getBaseContext(), LoginActivity.class);
+          startActivity(goToLogin);
+        },
+        error -> Log.e("AuthQuickstart", error.toString())
+    );
   }
 }
