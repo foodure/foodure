@@ -22,12 +22,10 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 @ModelConfig(pluralName = "Restaurants")
 public final class Restaurant implements Model {
   public static final QueryField ID = field("Restaurant", "id");
-  public static final QueryField EMAIL = field("Restaurant", "email");
   public static final QueryField TITLE = field("Restaurant", "title");
   public static final QueryField USERNAME = field("Restaurant", "username");
   public static final QueryField LOCATION = field("Restaurant", "location");
   private final @ModelField(targetType="ID", isRequired = true) String id;
-  private final @ModelField(targetType="String", isRequired = true) String email;
   private final @ModelField(targetType="String", isRequired = true) String title;
   private final @ModelField(targetType="String", isRequired = true) String username;
   private final @ModelField(targetType="String", isRequired = true) String location;
@@ -36,10 +34,6 @@ public final class Restaurant implements Model {
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
       return id;
-  }
-  
-  public String getEmail() {
-      return email;
   }
   
   public String getTitle() {
@@ -66,9 +60,8 @@ public final class Restaurant implements Model {
       return updatedAt;
   }
   
-  private Restaurant(String id, String email, String title, String username, String location) {
+  private Restaurant(String id, String title, String username, String location) {
     this.id = id;
-    this.email = email;
     this.title = title;
     this.username = username;
     this.location = location;
@@ -83,7 +76,6 @@ public final class Restaurant implements Model {
       } else {
       Restaurant restaurant = (Restaurant) obj;
       return ObjectsCompat.equals(getId(), restaurant.getId()) &&
-              ObjectsCompat.equals(getEmail(), restaurant.getEmail()) &&
               ObjectsCompat.equals(getTitle(), restaurant.getTitle()) &&
               ObjectsCompat.equals(getUsername(), restaurant.getUsername()) &&
               ObjectsCompat.equals(getLocation(), restaurant.getLocation()) &&
@@ -96,7 +88,6 @@ public final class Restaurant implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
-      .append(getEmail())
       .append(getTitle())
       .append(getUsername())
       .append(getLocation())
@@ -111,7 +102,6 @@ public final class Restaurant implements Model {
     return new StringBuilder()
       .append("Restaurant {")
       .append("id=" + String.valueOf(getId()) + ", ")
-      .append("email=" + String.valueOf(getEmail()) + ", ")
       .append("title=" + String.valueOf(getTitle()) + ", ")
       .append("username=" + String.valueOf(getUsername()) + ", ")
       .append("location=" + String.valueOf(getLocation()) + ", ")
@@ -121,7 +111,7 @@ public final class Restaurant implements Model {
       .toString();
   }
   
-  public static EmailStep builder() {
+  public static TitleStep builder() {
       return new Builder();
   }
   
@@ -148,23 +138,16 @@ public final class Restaurant implements Model {
       id,
       null,
       null,
-      null,
       null
     );
   }
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
-      email,
       title,
       username,
       location);
   }
-  public interface EmailStep {
-    TitleStep email(String email);
-  }
-  
-
   public interface TitleStep {
     UsernameStep title(String title);
   }
@@ -186,9 +169,8 @@ public final class Restaurant implements Model {
   }
   
 
-  public static class Builder implements EmailStep, TitleStep, UsernameStep, LocationStep, BuildStep {
+  public static class Builder implements TitleStep, UsernameStep, LocationStep, BuildStep {
     private String id;
-    private String email;
     private String title;
     private String username;
     private String location;
@@ -198,17 +180,9 @@ public final class Restaurant implements Model {
         
         return new Restaurant(
           id,
-          email,
           title,
           username,
           location);
-    }
-    
-    @Override
-     public TitleStep email(String email) {
-        Objects.requireNonNull(email);
-        this.email = email;
-        return this;
     }
     
     @Override
@@ -255,17 +229,11 @@ public final class Restaurant implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String email, String title, String username, String location) {
+    private CopyOfBuilder(String id, String title, String username, String location) {
       super.id(id);
-      super.email(email)
-        .title(title)
+      super.title(title)
         .username(username)
         .location(location);
-    }
-    
-    @Override
-     public CopyOfBuilder email(String email) {
-      return (CopyOfBuilder) super.email(email);
     }
     
     @Override

@@ -7,7 +7,6 @@ type Account @model {
 
 type Restaurant @model {
   id: ID!
-  email: String!
   title: String!
   username: String!
   location : String!
