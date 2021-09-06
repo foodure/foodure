@@ -1,5 +1,6 @@
 package com.foodure.view;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -9,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 
 import com.amplifyframework.AmplifyException;
@@ -18,6 +20,7 @@ import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.generated.model.Account;
+import com.amplifyframework.datastore.generated.model.FoodPost;
 import com.amplifyframework.storage.s3.AWSS3StoragePlugin;
 import com.foodure.R;
 
@@ -30,6 +33,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     private final Handler handler = new Handler();
     private Account AccountData;
     private Handler handler2 = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
 
 
         handler.postDelayed(() -> {
@@ -98,6 +103,8 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                 Log.i(TAG, "AccountData: " + AccountData);
 
+
+
                 if(AccountData.getType().equals("user")){
                     Intent goToMain = new Intent(SplashScreenActivity.this, MainActivity.class);
                     startActivity(goToMain);
@@ -105,6 +112,8 @@ public class SplashScreenActivity extends AppCompatActivity {
                     Intent goToMain = new Intent(SplashScreenActivity.this, RestaurantActivity.class);
                     startActivity(goToMain);
                 }
+
+
 
 
             } else {

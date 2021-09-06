@@ -26,7 +26,6 @@ type FoodPost @model
   type: String!
   location : String!
   restaurant: Restaurant! @connection(fields: ["foodID"])
-
 }
 
 type Cart @model {

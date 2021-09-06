@@ -46,7 +46,7 @@ public class RestaurantAddFoodActivity extends AppCompatActivity {
     Button addFoodBtn = findViewById(R.id.signupBtn);
 
     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-      R.array.location_array, android.R.layout.simple_spinner_item);
+            R.array.location_array, android.R.layout.simple_spinner_item);
     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     spinner.setAdapter(adapter);
 
@@ -98,23 +98,23 @@ public class RestaurantAddFoodActivity extends AppCompatActivity {
 
   public void getRestaurantAPIByName(String name) {
     Amplify.API.query(
-      ModelQuery.list(Restaurant.class, Restaurant.USERNAME.contains(name)),
-      response -> {
-        for (Restaurant restaurant : response.getData()) {
-          Log.i(TAG, "account type: " + restaurant.getTitle());
-          RestaurantsData = restaurant;
-        }
-      },
-      error -> {
-        Log.i(TAG, "Query failure", error);
-      }
+            ModelQuery.list(Restaurant.class, Restaurant.USERNAME.contains(name)),
+            response -> {
+              for (Restaurant restaurant : response.getData()) {
+                Log.i(TAG, "account type: " + restaurant.getTitle());
+                RestaurantsData = restaurant;
+              }
+            },
+            error -> {
+              Log.i(TAG, "Query failure", error);
+            }
     );
   }
 
   public void saveAPI(FoodPost item) {
     Amplify.API.mutate(ModelMutation.create(item),
-      success -> Log.i(TAG, "Saved food item to api : " + success.getData()),
-      error -> Log.e(TAG, "Could not save food item to API/dynamodb", error));
+            success -> Log.i(TAG, "Saved food item to api : " + success.getData()),
+            error -> Log.e(TAG, "Could not save food item to API/dynamodb", error));
   }
 
 }
