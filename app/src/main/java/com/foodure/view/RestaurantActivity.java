@@ -20,6 +20,7 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.FoodPost;
 import com.foodure.R;
 import com.foodure.adapter.AdapterFood;
+import com.foodure.adapter.MainAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,8 @@ public class RestaurantActivity extends AppCompatActivity {
 
     private static final String TAG = "RestaurantActivity";
     private List<FoodPost> foodPostList ;
-    private AdapterFood adapter ;
+    private AdapterFood adapterFood;
+
     private Handler foodHandler ;
     private RecyclerView recyclerView ;
 
@@ -76,7 +78,7 @@ public class RestaurantActivity extends AppCompatActivity {
         foodPostList = new ArrayList<>();
         getFoods();
 
-        adapter = new AdapterFood(foodPostList, new AdapterFood.OnFoodClickListener() {
+        adapterFood = new AdapterFood(foodPostList, new AdapterFood.OnFoodClickListener() {
             @Override
             public void onDeleteFood(int position) {
 
@@ -90,7 +92,7 @@ public class RestaurantActivity extends AppCompatActivity {
         ) ;
 
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapterFood);
 
 
 

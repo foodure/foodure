@@ -17,6 +17,7 @@ type Restaurant @model {
 # and can query through Post.editors and User.posts
 type FoodPost @model
 @key(name: "foodItem", fields: ["foodID"])
+
 {
   id: ID!
   foodID: ID!
