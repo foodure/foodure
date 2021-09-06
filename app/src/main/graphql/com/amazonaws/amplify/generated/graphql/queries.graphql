@@ -74,7 +74,6 @@ query SyncRestaurants(
   ) {
     items {
       id
-      email
       title
       username
       location
@@ -95,7 +94,6 @@ query SyncRestaurants(
 query GetRestaurant($id: ID!) {
   getRestaurant(id: $id) {
     id
-    email
     title
     username
     location
@@ -130,7 +128,6 @@ query ListRestaurants(
   listRestaurants(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      email
       title
       username
       location
@@ -168,7 +165,6 @@ query SyncFoodPosts(
       quantity
       restaurant {
         id
-        email
         title
         username
         location
@@ -207,7 +203,6 @@ query GetFoodPost($id: ID!) {
     quantity
     restaurant {
       id
-      email
       title
       username
       location
@@ -256,7 +251,6 @@ query ListFoodPosts(
       quantity
       restaurant {
         id
-        email
         title
         username
         location
