@@ -45,10 +45,10 @@
       android:text="Restaurant Page"
       android:textColor="#FFFFFF"
       android:textSize="24sp"
-      app:layout_constraintEnd_toStartOf="@+id/logout_home"
       app:layout_constraintHorizontal_bias="0.153"
       app:layout_constraintStart_toStartOf="@+id/topView"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/logout_restaurantPage"/>
 
   <TextView
       android:id="@+id/username_restaurantPage"
@@ -118,6 +118,7 @@
       app:srcCompat="@drawable/ic_login_24" />
 
   <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recyclerView_restaurantPage"
       android:layout_width="match_parent"
       android:layout_height="400dp"
       android:layout_marginStart="16dp"

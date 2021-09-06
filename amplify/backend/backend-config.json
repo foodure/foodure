@@ -1,61 +1,61 @@
 {
-  "api": {
-    "amplifyDatasource": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
-      "output": {
-        "authConfig": {
-          "additionalAuthenticationProviders": [],
-          "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 350,
-              "description": "AKIATOKLBOGB7CLBNU5R"
+    "api": {
+        "amplifyDatasource": {
+            "service": "AppSync",
+            "providerPlugin": "awscloudformation",
+            "output": {
+                "authConfig": {
+                    "additionalAuthenticationProviders": [],
+                    "defaultAuthentication": {
+                        "authenticationType": "API_KEY",
+                        "apiKeyConfig": {
+                            "apiKeyExpirationDays": 350,
+                            "description": "AKIATOKLBOGB7CLBNU5R"
+                        }
+                    }
+                }
             }
-          }
         }
-      }
-    }
-  },
-  "auth": {
-    "foodure06cce10a": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false,
-      "frontendAuthConfig": {
-        "loginMechanisms": [
-          "EMAIL",
-          "PREFERRED_USERNAME",
-          "PHONE_NUMBER"
-        ],
-        "signupAttributes": [
-          "EMAIL"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyMinLength": 8,
-          "passwordPolicyCharacters": []
-        },
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ]
-      }
-    }
-  },
-  "storage": {
-    "s3ffbddc2f": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation"
-    }
-  },
-  "notifications": {
-    "foodureNkZBl": {
-      "service": "Pinpoint",
-      "channels": [
-        "FCM"
-      ]
-    }
-  },
-  "function": {}
+    },
+    "auth": {
+        "foodure06cce10a": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [],
+            "customAuth": false,
+            "frontendAuthConfig": {
+                "loginMechanisms": [
+                    "EMAIL",
+                    "PREFERRED_USERNAME",
+                    "PHONE_NUMBER"
+                ],
+                "signupAttributes": [
+                    "EMAIL"
+                ],
+                "passwordProtectionSettings": {
+                    "passwordPolicyMinLength": 8,
+                    "passwordPolicyCharacters": []
+                },
+                "mfaConfiguration": "OFF",
+                "mfaTypes": [
+                    "SMS"
+                ]
+            }
+        }
+    },
+    "storage": {
+        "s3ffbddc2f": {
+            "service": "S3",
+            "providerPlugin": "awscloudformation"
+        }
+    },
+    "notifications": {
+        "foodureNkZBl": {
+            "service": "Pinpoint",
+            "channels": [
+                "FCM"
+            ]
+        }
+    },
+    "function": {}
 }

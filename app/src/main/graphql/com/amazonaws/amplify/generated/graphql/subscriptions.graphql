@@ -41,7 +41,6 @@ subscription OnDeleteAccount {
 subscription OnCreateRestaurant {
   onCreateRestaurant {
     id
-    email
     title
     username
     location
@@ -50,8 +49,10 @@ subscription OnCreateRestaurant {
         id
         foodID
         orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt
@@ -71,7 +72,6 @@ subscription OnCreateRestaurant {
 subscription OnUpdateRestaurant {
   onUpdateRestaurant {
     id
-    email
     title
     username
     location
@@ -80,8 +80,10 @@ subscription OnUpdateRestaurant {
         id
         foodID
         orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt
@@ -101,7 +103,6 @@ subscription OnUpdateRestaurant {
 subscription OnDeleteRestaurant {
   onDeleteRestaurant {
     id
-    email
     title
     username
     location
@@ -110,8 +111,10 @@ subscription OnDeleteRestaurant {
         id
         foodID
         orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt
@@ -133,11 +136,12 @@ subscription OnCreateFoodPost {
     id
     foodID
     orderID
-    type
+    title
     quantity
+    type
+    location
     restaurant {
       id
-      email
       title
       username
       location
@@ -177,11 +181,12 @@ subscription OnUpdateFoodPost {
     id
     foodID
     orderID
-    type
+    title
     quantity
+    type
+    location
     restaurant {
       id
-      email
       title
       username
       location
@@ -221,11 +226,12 @@ subscription OnDeleteFoodPost {
     id
     foodID
     orderID
-    type
+    title
     quantity
+    type
+    location
     restaurant {
       id
-      email
       title
       username
       location
@@ -270,8 +276,10 @@ subscription OnCreateCart {
         id
         foodID
         orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt
@@ -298,8 +306,10 @@ subscription OnUpdateCart {
         id
         foodID
         orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt
@@ -326,8 +336,10 @@ subscription OnDeleteCart {
         id
         foodID
         orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt

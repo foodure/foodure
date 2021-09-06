@@ -53,7 +53,6 @@ mutation CreateRestaurant(
 ) {
   createRestaurant(input: $input, condition: $condition) {
     id
-    email
     title
     username
     location
@@ -62,8 +61,10 @@ mutation CreateRestaurant(
         id
         foodID
         orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt
@@ -86,7 +87,6 @@ mutation UpdateRestaurant(
 ) {
   updateRestaurant(input: $input, condition: $condition) {
     id
-    email
     title
     username
     location
@@ -95,8 +95,10 @@ mutation UpdateRestaurant(
         id
         foodID
         orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt
@@ -119,7 +121,6 @@ mutation DeleteRestaurant(
 ) {
   deleteRestaurant(input: $input, condition: $condition) {
     id
-    email
     title
     username
     location
@@ -128,8 +129,10 @@ mutation DeleteRestaurant(
         id
         foodID
         orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt
@@ -154,11 +157,12 @@ mutation CreateFoodPost(
     id
     foodID
     orderID
-    type
+    title
     quantity
+    type
+    location
     restaurant {
       id
-      email
       title
       username
       location
@@ -201,11 +205,12 @@ mutation UpdateFoodPost(
     id
     foodID
     orderID
-    type
+    title
     quantity
+    type
+    location
     restaurant {
       id
-      email
       title
       username
       location
@@ -248,11 +253,12 @@ mutation DeleteFoodPost(
     id
     foodID
     orderID
-    type
+    title
     quantity
+    type
+    location
     restaurant {
       id
-      email
       title
       username
       location
@@ -300,8 +306,10 @@ mutation CreateCart(
         id
         foodID
         orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt
@@ -331,8 +339,10 @@ mutation UpdateCart(
         id
         foodID
         orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt
@@ -362,8 +372,10 @@ mutation DeleteCart(
         id
         foodID
         orderID
-        type
+        title
         quantity
+        type
+        location
         _version
         _deleted
         _lastChangedAt

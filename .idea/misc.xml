@@ -5,24 +5,32 @@
       <map>
         <entry key="..\:/Users/STUDENT/AndroidGroupProject/foodure/app/src/main/res/layout/activity_profile.xml" value="0.22" />
         <entry key="..\:/Users/STUDENT/AndroidGroupProject/foodure/app/src/main/res/layout/activity_settings.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/maria/testFoodure/foodure/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/maria/testFoodure/foodure/app/src/main/res/layout/activity_profile.xml" value="0.23489583333333333" />
-        <entry key="..\:/Users/maria/testFoodure/foodure/app/src/main/res/layout/activity_restaurant_profile.xml" value="0.23489583333333333" />
-        <entry key="..\:/Users/maria/testFoodure/foodure/app/src/main/res/layout/activity_restuarant.xml" value="0.2" />
+        <entry key="..\:/Users/STUDENT/AndroidStudioProjects/foodure/app/src/main/res/layout/activity_restuarant.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/STUDENT/AndroidStudioProjects/foodure/app/src/main/res/layout/activity_signup.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/STUDENT/AndroidStudioProjects/foodure/app/src/main/res/layout/card_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/STUDENT/AndroidStudioProjects/foodure/app/src/main/res/layout/card_layout_restaurant.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/STUDENT/Foodure/foodure/app/src/main/res/drawable/ic_fastfood_24.xml" value="0.2203125" />
+        <entry key="..\:/Users/STUDENT/Foodure/foodure/app/src/main/res/drawable/ic_groceries.xml" value="0.2203125" />
+        <entry key="..\:/Users/STUDENT/Foodure/foodure/app/src/main/res/drawable/ic_picnic_basket.xml" value="0.2203125" />
+        <entry key="..\:/Users/STUDENT/Foodure/foodure/app/src/main/res/drawable/round_bg_dark.xml" value="0.2203125" />
+        <entry key="..\:/Users/STUDENT/Foodure/foodure/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/STUDENT/Foodure/foodure/app/src/main/res/layout/activity_restuarant.xml" value="0.22" />
+        <entry key="..\:/Users/STUDENT/Foodure/foodure/app/src/main/res/layout/card_layout.xml" value="0.25" />
+        <entry key="..\:/Users/Student/asac/401/foodure/app/src/main/res/layout/activity_restaurant_add_food.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Student/asac/401/foodure/app/src/main/res/layout/activity_restaurant_settings.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Student/asac/401/foodure/app/src/main/res/layout/card_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Student/asac/401/foodure/app/src/main/res/layout/card_layout_restaurant.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_logo_background.xml" value="0.3385416666666667" />
-        <entry key="app/src/main/res/drawable/ic_add_location_24.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/ic_bg.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/ic_bg_screen.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/ic_email_24.xml" value="0.3385416666666667" />
-        <entry key="app/src/main/res/drawable/ic_fastfood_24.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/ic_lock_24.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/ic_person_24.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/ic_top_action_bar.xml" value="0.3385416666666667" />
-        <entry key="app/src/main/res/drawable/ic_trash_24.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/ic_verified_24.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/round_bg.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/round_bg_dark.xml" value="0.3385416666666667" />
@@ -30,15 +38,10 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.3182291666666667" />
-        <entry key="app/src/main/res/layout/activity_restaurant_add_food.xml" value="0.6" />
-        <entry key="app/src/main/res/layout/activity_restaurant_profile.xml" value="0.264" />
-        <entry key="app/src/main/res/layout/activity_restaurant_settings.xml" value="0.2984375" />
-        <entry key="app/src/main/res/layout/activity_restuarant.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/activity_verification.xml" value="0.3182291666666667" />
-        <entry key="app/src/main/res/layout/card_layout.xml" value="0.3182291666666667" />
       </map>
     </option>
   </component>
