@@ -37,7 +37,7 @@
         app:srcCompat="@drawable/ic_settings" />
 
     <TextView
-        android:id="@+id/settingsPage"
+        android:id="@+id/restaurant_Label_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -51,13 +51,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/back_settings"
+        android:id="@+id/back_detailspage"
         android:layout_width="33dp"
         android:layout_height="27dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/settingsPage"
+        app:layout_constraintEnd_toStartOf="@+id/restaurant_Label_details"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/topView"
         app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />

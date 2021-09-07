@@ -35,13 +35,18 @@
         <entry key="app/src/main/res/drawable/round_bg.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/round_bg_dark.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/round_border.xml" value="0.3385416666666667" />
+        <entry key="app/src/main/res/layout/activity_food_details.xml" value="0.3177083333333333" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.3182291666666667" />
+        <entry key="app/src/main/res/layout/activity_restaurant_add_food.xml" value="0.3177083333333333" />
+        <entry key="app/src/main/res/layout/activity_restaurant_food_details.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/activity_restuarant.xml" value="0.3177083333333333" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/activity_verification.xml" value="0.3182291666666667" />
+        <entry key="app/src/main/res/layout/card_layout.xml" value="0.4" />
       </map>
     </option>
   </component>

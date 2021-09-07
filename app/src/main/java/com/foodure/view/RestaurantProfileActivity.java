@@ -24,7 +24,11 @@ public class RestaurantProfileActivity extends AppCompatActivity {
   }
 
   public void back() {
-    Intent goToMain = new Intent(RestaurantProfileActivity.this, RestaurantActivity.class);
-    startActivity(goToMain);
+    onBackPressed();
+  }
+
+  @Override
+  public void onBackPressed() {
+    super.onBackPressed();
   }
 }
