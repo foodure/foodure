@@ -38,10 +38,10 @@ public class AdapterFood extends RecyclerView.Adapter<AdapterFood.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull AdapterFood.ViewHolder holder, int position) {
         FoodPost foodPost = foodDetailsList.get(position);
-        holder.restaurantLabel.setText(foodPost.getRestaurant().getTitle());
-        holder.foodLabel.setText(foodPost.getTitle());
-        holder.quantityLabel.setText(foodPost.getQuantity());
-        holder.locationLabel.setText(foodPost.getLocation());
+        holder.restaurantLabel.setText(foodPost.getTitle());
+        String str = "Quantity: "+foodPost.getQuantity();
+        holder.foodLabel.setText(str);
+
 
     }
 
@@ -55,17 +55,14 @@ public class AdapterFood extends RecyclerView.Adapter<AdapterFood.ViewHolder> {
     static class ViewHolder extends RecyclerView.ViewHolder{
         private TextView restaurantLabel ;
         private TextView foodLabel ;
-        private TextView quantityLabel ;
-        private TextView locationLabel ;
         private Button deleteButton ;
 
 
         public ViewHolder(@NonNull View itemView , OnFoodClickListener onFoodClickListener) {
             super(itemView);
             restaurantLabel  = itemView.findViewById(R.id.restaurantLabel);
-            foodLabel = itemView.findViewById(R.id.foodLabel);
-            quantityLabel  = itemView.findViewById(R.id.quantityLabel);
-            locationLabel = itemView.findViewById(R.id.locationLabel);
+            foodLabel = itemView.findViewById(R.id.foodLabel_Quantity);
+
             deleteButton = itemView.findViewById(R.id.delete);
 
             itemView.setOnClickListener(view -> {
