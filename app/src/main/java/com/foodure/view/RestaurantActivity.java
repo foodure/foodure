@@ -147,12 +147,19 @@ public class RestaurantActivity extends AppCompatActivity {
         Amplify.API.query(ModelQuery.list(FoodPost.class) ,
                 response -> {
                         for (FoodPost foodPost : response.getData()){
-                            foodPostList.add(foodPost);
+                            Log.i(TAG, "getFoods: username from foodpost --> " +foodPost.getRestaurant().getUsername() );
+                            if (foodPost.getRestaurant().getUsername().equals(getUsername()))
+                                    foodPostList.add(foodPost);
                         }
                         foodHandler.sendEmptyMessage(1);
                 } ,
                 failure -> Log.i(TAG, "getFoods: ")
                 ) ;
+
+    }
+
+    private String getUsername(){
+        return Amplify.Auth.getCurrentUser().getUsername();
     }
 
 
