@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.FoodPost;
@@ -34,6 +35,7 @@ public class RestaurantActivity extends AppCompatActivity {
 
     private Handler foodHandler ;
     private RecyclerView recyclerView ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +84,14 @@ public class RestaurantActivity extends AppCompatActivity {
             @Override
             public void onDeleteFood(int position) {
 
+                Amplify.API.mutate(ModelMutation.delete(foodPostList.get(position)),
+                        response -> Log.i(TAG, "item deleted from API:"),
+                        error -> Log.e(TAG, "Delete failed", error)
+                );
+                foodPostList.remove(position);
+                listItemDeleted();
             }
-        }) ;
+        });
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(
                 this ,
@@ -136,4 +144,11 @@ public class RestaurantActivity extends AppCompatActivity {
                 failure -> Log.i(TAG, "getFoods: ")
                 ) ;
     }
+
+
+
+@SuppressLint("NotifyDataSetChanged")
+private void listItemDeleted() {
+    adapterFood.notifyDataSetChanged();
+        }
 }
