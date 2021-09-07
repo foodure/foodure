@@ -12,19 +12,23 @@ import java.util.Objects;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
-        Objects.requireNonNull(getSupportActionBar()).hide();
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_settings);
+    Objects.requireNonNull(getSupportActionBar()).hide();
 
-        ImageView back = findViewById(R.id.back_settings);
+    ImageView back = findViewById(R.id.back_detailspage);
 
-        back.setOnClickListener(v -> back());
-    }
+    back.setOnClickListener(v -> back());
+  }
 
-    public void back(){
-        Intent goToMain = new Intent(SettingsActivity.this, MainActivity.class);
-        startActivity(goToMain);
-    }
+  public void back() {
+    onBackPressed();
+  }
+
+  @Override
+  public void onBackPressed() {
+    super.onBackPressed();
+  }
 }

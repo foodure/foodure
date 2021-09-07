@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
           }
 
-          if(AccountData.getType().equals("user")){
+          if (AccountData.getType().equals("user")) {
             Intent goToMain = new Intent(LoginActivity.this, MainActivity.class);
             goToMain.putExtra("username", username);
             startActivity(goToMain);

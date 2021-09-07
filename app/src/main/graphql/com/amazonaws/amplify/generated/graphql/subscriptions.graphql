@@ -1,358 +1,262 @@
 # this is an auto generated file. This will be overwritten
 subscription OnCreateAccount {
-  onCreateAccount {
-    id
-    username
-    location
-    type
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
+    onCreateAccount {
+        id
+        username
+        location
+        type
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+    }
 }
 subscription OnUpdateAccount {
-  onUpdateAccount {
-    id
-    username
-    location
-    type
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
+    onUpdateAccount {
+        id
+        username
+        location
+        type
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+    }
 }
 subscription OnDeleteAccount {
-  onDeleteAccount {
-    id
-    username
-    location
-    type
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
+    onDeleteAccount {
+        id
+        username
+        location
+        type
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+    }
 }
 subscription OnCreateRestaurant {
-  onCreateRestaurant {
-    id
-    title
-    username
-    location
-    restaurantPost {
-      items {
+    onCreateRestaurant {
         id
-        foodID
-        orderID
         title
-        quantity
-        type
+        username
         location
+        restaurantPost {
+            items {
+                id
+                foodID
+                title
+                quantity
+                type
+                location
+                fileName
+                _version
+                _deleted
+                _lastChangedAt
+                createdAt
+                updatedAt
+            }
+            nextToken
+            startedAt
+        }
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
-      }
-      nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
 }
 subscription OnUpdateRestaurant {
-  onUpdateRestaurant {
-    id
-    title
-    username
-    location
-    restaurantPost {
-      items {
+    onUpdateRestaurant {
         id
-        foodID
-        orderID
         title
-        quantity
-        type
+        username
         location
+        restaurantPost {
+            items {
+                id
+                foodID
+                title
+                quantity
+                type
+                location
+                fileName
+                _version
+                _deleted
+                _lastChangedAt
+                createdAt
+                updatedAt
+            }
+            nextToken
+            startedAt
+        }
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
-      }
-      nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
 }
 subscription OnDeleteRestaurant {
-  onDeleteRestaurant {
-    id
-    title
-    username
-    location
-    restaurantPost {
-      items {
+    onDeleteRestaurant {
         id
-        foodID
-        orderID
         title
-        quantity
-        type
+        username
         location
+        restaurantPost {
+            items {
+                id
+                foodID
+                title
+                quantity
+                type
+                location
+                fileName
+                _version
+                _deleted
+                _lastChangedAt
+                createdAt
+                updatedAt
+            }
+            nextToken
+            startedAt
+        }
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
-      }
-      nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
 }
 subscription OnCreateFoodPost {
-  onCreateFoodPost {
-    id
-    foodID
-    orderID
-    title
-    quantity
-    type
-    location
-    restaurant {
-      id
-      title
-      username
-      location
-      restaurantPost {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
+    onCreateFoodPost {
+        id
+        foodID
+        title
+        quantity
+        type
+        location
+        fileName
+        restaurant {
+            id
+            title
+            username
+            location
+            restaurantPost {
+                nextToken
+                startedAt
+            }
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
     }
-    cart {
-      id
-      username
-      location
-      cartPosts {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
 }
 subscription OnUpdateFoodPost {
-  onUpdateFoodPost {
-    id
-    foodID
-    orderID
-    title
-    quantity
-    type
-    location
-    restaurant {
-      id
-      title
-      username
-      location
-      restaurantPost {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
+    onUpdateFoodPost {
+        id
+        foodID
+        title
+        quantity
+        type
+        location
+        fileName
+        restaurant {
+            id
+            title
+            username
+            location
+            restaurantPost {
+                nextToken
+                startedAt
+            }
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
     }
-    cart {
-      id
-      username
-      location
-      cartPosts {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
 }
 subscription OnDeleteFoodPost {
-  onDeleteFoodPost {
-    id
-    foodID
-    orderID
-    title
-    quantity
-    type
-    location
-    restaurant {
-      id
-      title
-      username
-      location
-      restaurantPost {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
+    onDeleteFoodPost {
+        id
+        foodID
+        title
+        quantity
+        type
+        location
+        fileName
+        restaurant {
+            id
+            title
+            username
+            location
+            restaurantPost {
+                nextToken
+                startedAt
+            }
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
     }
-    cart {
-      id
-      username
-      location
-      cartPosts {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
 }
 subscription OnCreateCart {
-  onCreateCart {
-    id
-    username
-    location
-    cartPosts {
-      items {
+    onCreateCart {
         id
-        foodID
-        orderID
-        title
-        quantity
-        type
+        username
         location
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
-      }
-      nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
 }
 subscription OnUpdateCart {
-  onUpdateCart {
-    id
-    username
-    location
-    cartPosts {
-      items {
+    onUpdateCart {
         id
-        foodID
-        orderID
-        title
-        quantity
-        type
+        username
         location
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
-      }
-      nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
 }
 subscription OnDeleteCart {
-  onDeleteCart {
-    id
-    username
-    location
-    cartPosts {
-      items {
+    onDeleteCart {
         id
-        foodID
-        orderID
-        title
-        quantity
-        type
+        username
         location
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
-      }
-      nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
 }

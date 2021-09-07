@@ -1,374 +1,314 @@
 # this is an auto generated file. This will be overwritten
 query SyncAccounts(
-  $filter: ModelAccountFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
+    $filter: ModelAccountFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
 ) {
-  syncAccounts(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      username
-      location
-      type
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
+    syncAccounts(
+        filter: $filter
+        limit: $limit
+        nextToken: $nextToken
+        lastSync: $lastSync
+    ) {
+        items {
+            id
+            username
+            location
+            type
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+        }
+        nextToken
+        startedAt
     }
-    nextToken
-    startedAt
-  }
 }
 query GetAccount($id: ID!) {
-  getAccount(id: $id) {
-    id
-    username
-    location
-    type
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
+    getAccount(id: $id) {
+        id
+        username
+        location
+        type
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+    }
 }
 query ListAccounts(
-  $filter: ModelAccountFilterInput
-  $limit: Int
-  $nextToken: String
+    $filter: ModelAccountFilterInput
+    $limit: Int
+    $nextToken: String
 ) {
-  listAccounts(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      username
-      location
-      type
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
+    listAccounts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+        items {
+            id
+            username
+            location
+            type
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+        }
+        nextToken
+        startedAt
     }
-    nextToken
-    startedAt
-  }
 }
 query SyncRestaurants(
-  $filter: ModelRestaurantFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
+    $filter: ModelRestaurantFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
 ) {
-  syncRestaurants(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      title
-      username
-      location
-      restaurantPost {
+    syncRestaurants(
+        filter: $filter
+        limit: $limit
+        nextToken: $nextToken
+        lastSync: $lastSync
+    ) {
+        items {
+            id
+            title
+            username
+            location
+            restaurantPost {
+                nextToken
+                startedAt
+            }
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+        }
         nextToken
         startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
-    nextToken
-    startedAt
-  }
 }
 query GetRestaurant($id: ID!) {
-  getRestaurant(id: $id) {
-    id
-    title
-    username
-    location
-    restaurantPost {
-      items {
+    getRestaurant(id: $id) {
         id
-        foodID
-        orderID
         title
-        quantity
-        type
+        username
         location
+        restaurantPost {
+            items {
+                id
+                foodID
+                title
+                quantity
+                type
+                location
+                fileName
+                _version
+                _deleted
+                _lastChangedAt
+                createdAt
+                updatedAt
+            }
+            nextToken
+            startedAt
+        }
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
-      }
-      nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
 }
 query ListRestaurants(
-  $filter: ModelRestaurantFilterInput
-  $limit: Int
-  $nextToken: String
+    $filter: ModelRestaurantFilterInput
+    $limit: Int
+    $nextToken: String
 ) {
-  listRestaurants(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      title
-      username
-      location
-      restaurantPost {
+    listRestaurants(filter: $filter, limit: $limit, nextToken: $nextToken) {
+        items {
+            id
+            title
+            username
+            location
+            restaurantPost {
+                nextToken
+                startedAt
+            }
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+        }
         nextToken
         startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
-    nextToken
-    startedAt
-  }
 }
 query SyncFoodPosts(
-  $filter: ModelFoodPostFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
+    $filter: ModelFoodPostFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
 ) {
-  syncFoodPosts(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      foodID
-      orderID
-      title
-      quantity
-      type
-      location
-      restaurant {
-        id
-        title
-        username
-        location
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      cart {
-        id
-        username
-        location
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
+    syncFoodPosts(
+        filter: $filter
+        limit: $limit
+        nextToken: $nextToken
+        lastSync: $lastSync
+    ) {
+        items {
+            id
+            foodID
+            title
+            quantity
+            type
+            location
+            fileName
+            restaurant {
+                id
+                title
+                username
+                location
+                _version
+                _deleted
+                _lastChangedAt
+                createdAt
+                updatedAt
+            }
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+        }
+        nextToken
+        startedAt
     }
-    nextToken
-    startedAt
-  }
 }
 query GetFoodPost($id: ID!) {
-  getFoodPost(id: $id) {
-    id
-    foodID
-    orderID
-    title
-    quantity
-    type
-    location
-    restaurant {
-      id
-      title
-      username
-      location
-      restaurantPost {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    cart {
-      id
-      username
-      location
-      cartPosts {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-query ListFoodPosts(
-  $filter: ModelFoodPostFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listFoodPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      foodID
-      orderID
-      title
-      quantity
-      type
-      location
-      restaurant {
-        id
-        title
-        username
-        location
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      cart {
-        id
-        username
-        location
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query SyncCarts(
-  $filter: ModelCartFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncCarts(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      username
-      location
-      cartPosts {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query GetCart($id: ID!) {
-  getCart(id: $id) {
-    id
-    username
-    location
-    cartPosts {
-      items {
+    getFoodPost(id: $id) {
         id
         foodID
-        orderID
         title
         quantity
         type
         location
+        fileName
+        restaurant {
+            id
+            title
+            username
+            location
+            restaurantPost {
+                nextToken
+                startedAt
+            }
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+        }
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
-      }
-      nextToken
-      startedAt
     }
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
 }
-query ListCarts(
-  $filter: ModelCartFilterInput
-  $limit: Int
-  $nextToken: String
+query ListFoodPosts(
+    $filter: ModelFoodPostFilterInput
+    $limit: Int
+    $nextToken: String
 ) {
-  listCarts(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      username
-      location
-      cartPosts {
+    listFoodPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+        items {
+            id
+            foodID
+            title
+            quantity
+            type
+            location
+            fileName
+            restaurant {
+                id
+                title
+                username
+                location
+                _version
+                _deleted
+                _lastChangedAt
+                createdAt
+                updatedAt
+            }
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+        }
         nextToken
         startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
-    nextToken
-    startedAt
-  }
+}
+query SyncCarts(
+    $filter: ModelCartFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+) {
+    syncCarts(
+        filter: $filter
+        limit: $limit
+        nextToken: $nextToken
+        lastSync: $lastSync
+    ) {
+        items {
+            id
+            username
+            location
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+        }
+        nextToken
+        startedAt
+    }
+}
+query GetCart($id: ID!) {
+    getCart(id: $id) {
+        id
+        username
+        location
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+    }
+}
+query ListCarts(
+    $filter: ModelCartFilterInput
+    $limit: Int
+    $nextToken: String
+) {
+    listCarts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+        items {
+            id
+            username
+            location
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+        }
+        nextToken
+        startedAt
+    }
 }

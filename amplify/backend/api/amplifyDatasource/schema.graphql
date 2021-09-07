@@ -25,6 +25,7 @@ type FoodPost @model
   quantity: String!
   type: String!
   location : String!
+  fileName: String
   restaurant: Restaurant! @connection(fields: ["foodID"])
 }
 

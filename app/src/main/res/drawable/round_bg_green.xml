@@ -2,7 +2,6 @@
 <shape xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     tools:ignore="ExtraText">
-    <solid android:color="#80D0C7"/>
-    <corners android:radius="25dp"
-        />
+    <solid android:color="#80D0C7" />
+    <corners android:radius="25dp" />
 </shape>

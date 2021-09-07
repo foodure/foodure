@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.RestaurantFoodDetailsActivity">
+    tools:context=".view.FoodDetailsActivity">
 
     <View
         android:id="@+id/topView"
@@ -37,7 +37,7 @@
         app:srcCompat="@drawable/ic_settings" />
 
     <TextView
-        android:id="@+id/restaurant_Label_details"
+        android:id="@+id/foodDetailsPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -51,33 +51,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/back_detailspage"
+        android:id="@+id/back_foodDetailsPage"
         android:layout_width="33dp"
         android:layout_height="27dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/restaurant_Label_details"
+        app:layout_constraintEnd_toStartOf="@+id/foodDetailsPage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/topView"
         app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
 
-    <TextView
-        android:id="@+id/foodNameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="TextView"
-        android:textSize="35sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/waveView" />
-
     <ImageView
-        android:id="@+id/foodDetailImg"
+        android:id="@+id/img_foodDetailsPage"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginStart="16dp"
@@ -90,20 +76,21 @@
         app:srcCompat="@drawable/ic_pictures" />
 
     <TextView
-        android:id="@+id/food_description_details"
+        android:id="@+id/foodNameLabel_foodDetailsPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="TextView"
-        android:textSize="28sp"
+        android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodNameLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/waveView" />
 
     <TextView
-        android:id="@+id/foodQuantityLabel"
+        android:id="@+id/description_foodDetailsPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -113,10 +100,10 @@
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/food_description_details" />
+        app:layout_constraintTop_toBottomOf="@+id/foodNameLabel_foodDetailsPage" />
 
     <TextView
-        android:id="@+id/location_Label_details"
+        android:id="@+id/quantity_foodDetailsPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -126,6 +113,19 @@
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodQuantityLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/description_foodDetailsPage" />
+
+    <TextView
+        android:id="@+id/location_foodDetailsPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantity_foodDetailsPage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

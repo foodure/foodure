@@ -15,21 +15,25 @@ import java.util.Objects;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private static final String TAG = "ProfileActivity";
+  private static final String TAG = "ProfileActivity";
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-        Objects.requireNonNull(getSupportActionBar()).hide();
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_profile);
+    Objects.requireNonNull(getSupportActionBar()).hide();
 
-        ImageView back = findViewById(R.id.back_profile);
+    ImageView back = findViewById(R.id.back_profile);
 
-        back.setOnClickListener(v -> back());
-    }
+    back.setOnClickListener(v -> back());
+  }
 
-    public void back(){
-        Intent goToMain = new Intent(ProfileActivity.this, MainActivity.class);
-        startActivity(goToMain);
-    }
+  public void back() {
+    onBackPressed();
+  }
+
+  @Override
+  public void onBackPressed() {
+    super.onBackPressed();
+  }
 }
