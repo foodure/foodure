@@ -70,6 +70,8 @@
             android:text="Delete"
             android:textColor="#D32F2F" />
 
+
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

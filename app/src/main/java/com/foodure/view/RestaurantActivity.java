@@ -91,6 +91,16 @@ public class RestaurantActivity extends AppCompatActivity {
                 foodPostList.remove(position);
                 listItemDeleted();
             }
+
+            @Override
+            public void onItemClick(int position) {
+                Intent goToFoodDetails = new Intent(getApplicationContext() , RestaurantFoodDetailsActivity.class) ;
+                goToFoodDetails.putExtra("restaurantLabel" , foodPostList.get(position).getRestaurant().getTitle()) ;
+                goToFoodDetails.putExtra( "foodLabel" , foodPostList.get(position).getTitle() ) ;
+                goToFoodDetails.putExtra("locationLabel" , foodPostList.get(position).getLocation() ) ;
+                goToFoodDetails.putExtra("quantityLabel" , foodPostList.get(position).getQuantity()) ;
+                startActivity(goToFoodDetails);
+            }
         });
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(

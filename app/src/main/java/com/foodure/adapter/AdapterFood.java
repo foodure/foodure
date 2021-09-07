@@ -20,6 +20,7 @@ public class AdapterFood extends RecyclerView.Adapter<AdapterFood.ViewHolder> {
 
     public interface OnFoodClickListener {
         void onDeleteFood(int position) ;
+        void onItemClick(int position) ;
     }
 
     public AdapterFood(List<FoodPost> foodDetailsList , OnFoodClickListener onFoodClickListener){
@@ -67,10 +68,13 @@ public class AdapterFood extends RecyclerView.Adapter<AdapterFood.ViewHolder> {
             locationLabel = itemView.findViewById(R.id.locationLabel);
             deleteButton = itemView.findViewById(R.id.delete);
 
+            itemView.setOnClickListener(view -> {
+                onFoodClickListener.onItemClick(getBindingAdapterPosition());
+            });
 
             deleteButton.setOnClickListener(view -> {
 
-                onFoodClickListener.onDeleteFood(getAdapterPosition());
+                onFoodClickListener.onDeleteFood(getBindingAdapterPosition());
             });
 
         }
