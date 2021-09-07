@@ -39,8 +39,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         FoodPost foodPost = foodDetailsList.get(position);
         holder.restaurantLabel.setText(foodPost.getRestaurant().getTitle());
         holder.foodLabel.setText(foodPost.getTitle());
-        holder.quantityLabel.setText(foodPost.getQuantity());
-        holder.locationLabel.setText(foodPost.getLocation());
+        String str = "Food type "+foodPost.getType() + "\r\nQuantity: " + foodPost.getQuantity() ;
+        holder.quantityLabel.setText(str);
+
 
     }
 
@@ -54,7 +55,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         private final TextView restaurantLabel;
         private final TextView foodLabel;
         private final TextView quantityLabel;
-        private final TextView locationLabel;
+
 
 
         public ViewHolder(@NonNull View itemView, OnFoodClickListener onFoodClickListener) {
@@ -62,7 +63,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             restaurantLabel = itemView.findViewById(R.id.restaurant_label_card);
             foodLabel = itemView.findViewById(R.id.food_title_label_card);
             quantityLabel = itemView.findViewById(R.id.quantity_label_card);
-            locationLabel = itemView.findViewById(R.id.food_type_label_card);
+
 
         }
     }

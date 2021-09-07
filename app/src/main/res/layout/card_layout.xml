@@ -16,59 +16,62 @@
         android:layout_height="wrap_content">
 
 
-        <TextView
-            android:id="@+id/restaurant_label_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Restaurant"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+      <ImageView
+        android:id="@+id/food_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_margin="10dp"
+        android:contentDescription=""
+        android:padding="5dp"
+        android:src="@drawable/ic_food" />
 
-        <TextView
-            android:id="@+id/food_title_label_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/restaurant_label_card"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Food Title" />
+      <TextView
+        android:id="@+id/restaurant_label_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/food_image"
+        android:text="String"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+      <TextView
+        android:id="@+id/food_title_label_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/restaurant_label_card"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/food_image"
+        android:text="Delete" />
+
+      <TextView
+        android:id="@+id/quantity_label_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/food_title_label_card"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/food_image"
+        android:text="Delete" />
 
 
-        <TextView
-            android:id="@+id/quantity_label_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/food_title_label_card"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="Quantity" />
-
-        <TextView
-            android:id="@+id/food_type_label_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/quantity_label_card"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:text="Food Type" />
-
-        <Button
-            android:id="@+id/add"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/food_type_label_card"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/round_bg_green"
-            android:drawableStart="@drawable/ic_fastfood_24"
-            android:padding="12dp"
-            android:text="Request Food"
-            android:textColor="@color/white" />
+      <Button
+        android:id="@+id/add"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quantity_label_card"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toEndOf="@+id/food_image"
+        android:background="@drawable/round_bg_green"
+        android:drawableStart="@drawable/ic_fastfood_24"
+        android:padding="12dp"
+        android:text="Request Food"
+        android:textColor="@color/white" />
 
     </RelativeLayout>
 

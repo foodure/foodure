@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.FoodPost;
@@ -34,6 +35,7 @@ public class RestaurantActivity extends AppCompatActivity {
 
     private Handler foodHandler ;
     private RecyclerView recyclerView ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +84,24 @@ public class RestaurantActivity extends AppCompatActivity {
             @Override
             public void onDeleteFood(int position) {
 
+                Amplify.API.mutate(ModelMutation.delete(foodPostList.get(position)),
+                        response -> Log.i(TAG, "item deleted from API:"),
+                        error -> Log.e(TAG, "Delete failed", error)
+                );
+                foodPostList.remove(position);
+                listItemDeleted();
             }
-        }) ;
+
+            @Override
+            public void onItemClick(int position) {
+                Intent goToFoodDetails = new Intent(getApplicationContext() , RestaurantFoodDetailsActivity.class) ;
+                goToFoodDetails.putExtra("restaurantLabel" , foodPostList.get(position).getRestaurant().getTitle()) ;
+                goToFoodDetails.putExtra( "foodLabel" , foodPostList.get(position).getTitle() ) ;
+                goToFoodDetails.putExtra("locationLabel" , foodPostList.get(position).getLocation() ) ;
+                goToFoodDetails.putExtra("quantityLabel" , foodPostList.get(position).getQuantity()) ;
+                startActivity(goToFoodDetails);
+            }
+        });
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(
                 this ,
@@ -129,11 +147,25 @@ public class RestaurantActivity extends AppCompatActivity {
         Amplify.API.query(ModelQuery.list(FoodPost.class) ,
                 response -> {
                         for (FoodPost foodPost : response.getData()){
-                            foodPostList.add(foodPost);
+                            Log.i(TAG, "getFoods: username from foodpost --> " +foodPost.getRestaurant().getUsername() );
+                            if (foodPost.getRestaurant().getUsername().equals(getUsername()))
+                                    foodPostList.add(foodPost);
                         }
                         foodHandler.sendEmptyMessage(1);
                 } ,
                 failure -> Log.i(TAG, "getFoods: ")
                 ) ;
+
     }
+
+    private String getUsername(){
+        return Amplify.Auth.getCurrentUser().getUsername();
+    }
+
+
+
+@SuppressLint("NotifyDataSetChanged")
+private void listItemDeleted() {
+    adapterFood.notifyDataSetChanged();
+        }
 }
