@@ -5,19 +5,10 @@
       <map>
         <entry key="..\:/Users/STUDENT/AndroidGroupProject/foodure/app/src/main/res/layout/activity_profile.xml" value="0.22" />
         <entry key="..\:/Users/STUDENT/AndroidGroupProject/foodure/app/src/main/res/layout/activity_settings.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/STUDENT/AndroidStudioProjects/foodure/app/src/main/res/layout/activity_restuarant.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/STUDENT/AndroidStudioProjects/foodure/app/src/main/res/layout/activity_signup.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/STUDENT/AndroidStudioProjects/foodure/app/src/main/res/layout/card_layout.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/STUDENT/AndroidStudioProjects/foodure/app/src/main/res/layout/card_layout_restaurant.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/STUDENT/Foodure/foodure/app/src/main/res/drawable/ic_fastfood_24.xml" value="0.2203125" />
-        <entry key="..\:/Users/STUDENT/Foodure/foodure/app/src/main/res/drawable/ic_groceries.xml" value="0.2203125" />
-        <entry key="..\:/Users/STUDENT/Foodure/foodure/app/src/main/res/drawable/ic_picnic_basket.xml" value="0.2203125" />
-        <entry key="..\:/Users/STUDENT/Foodure/foodure/app/src/main/res/drawable/round_bg_dark.xml" value="0.2203125" />
-        <entry key="..\:/Users/STUDENT/Foodure/foodure/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/STUDENT/Foodure/foodure/app/src/main/res/layout/activity_restuarant.xml" value="0.22" />
-        <entry key="..\:/Users/STUDENT/Foodure/foodure/app/src/main/res/layout/card_layout.xml" value="0.25" />
         <entry key="..\:/Users/Student/asac/401/foodure/app/src/main/res/layout/activity_restaurant_add_food.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Student/asac/401/foodure/app/src/main/res/layout/activity_restaurant_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Student/asac/401/foodure/app/src/main/res/layout/activity_restaurant_settings.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Student/asac/401/foodure/app/src/main/res/layout/activity_restuarant.xml" value="0.2015625" />
         <entry key="..\:/Users/Student/asac/401/foodure/app/src/main/res/layout/card_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Student/asac/401/foodure/app/src/main/res/layout/card_layout_restaurant.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3385416666666667" />
@@ -35,18 +26,13 @@
         <entry key="app/src/main/res/drawable/round_bg.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/round_bg_dark.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/round_border.xml" value="0.3385416666666667" />
-        <entry key="app/src/main/res/layout/activity_food_details.xml" value="0.3177083333333333" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.3182291666666667" />
-        <entry key="app/src/main/res/layout/activity_restaurant_add_food.xml" value="0.3177083333333333" />
-        <entry key="app/src/main/res/layout/activity_restaurant_food_details.xml" value="0.4" />
-        <entry key="app/src/main/res/layout/activity_restuarant.xml" value="0.3177083333333333" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/activity_verification.xml" value="0.3182291666666667" />
-        <entry key="app/src/main/res/layout/card_layout.xml" value="0.4" />
       </map>
     </option>
   </component>
