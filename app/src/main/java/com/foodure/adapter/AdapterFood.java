@@ -40,10 +40,8 @@ public class AdapterFood extends RecyclerView.Adapter<AdapterFood.ViewHolder> {
   public void onBindViewHolder(@NonNull AdapterFood.ViewHolder holder, int position) {
     FoodPost foodPost = foodDetailsList.get(position);
     holder.restaurantLabel.setText(foodPost.getTitle());
-    String str = "Quantity: " + foodPost.getQuantity();
+    String str = "Quantity: " + foodPost.getQuantity() + " " + foodPost.getTypeOfQuantity();
     holder.foodLabel.setText(str);
-
-
   }
 
 

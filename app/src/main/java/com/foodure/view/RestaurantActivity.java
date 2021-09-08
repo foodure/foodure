@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,7 +20,9 @@ import android.widget.TextView;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Account;
 import com.amplifyframework.datastore.generated.model.FoodPost;
+import com.amplifyframework.datastore.generated.model.Restaurant;
 import com.foodure.R;
 import com.foodure.adapter.AdapterFood;
 import com.foodure.adapter.MainAdapter;
@@ -39,11 +42,41 @@ public class RestaurantActivity extends AppCompatActivity {
 
   private Handler handler;
 
+  private Restaurant restaurantData;
+  private Handler  RestaurantDataHandler;
+
+  private Handler handlerTry;
+
+  TextView emptyItemText;
+  ImageView emptyItemImg;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_restuarant);
     Objects.requireNonNull(getSupportActionBar()).hide();
+
+    getRestaurantDataAPIByName(getUsername());
+
+    RestaurantDataHandler = new Handler(new Handler.Callback() {
+      @SuppressLint("NotifyDataSetChanged")
+      @Override
+      public boolean handleMessage(@NonNull Message message) {
+        if(restaurantData == null){
+          goToSettings();
+        }
+        return false;
+      }
+    });
+
+    handlerTry = new Handler(new Handler.Callback() {
+      @SuppressLint("NotifyDataSetChanged")
+      @Override
+      public boolean handleMessage(@NonNull Message message) {
+        goneView();
+        return false;
+      }
+    });
 
     foodHandler = new Handler(new Handler.Callback() {
       @SuppressLint("NotifyDataSetChanged")
@@ -62,30 +95,19 @@ public class RestaurantActivity extends AppCompatActivity {
 
     recyclerView = findViewById(R.id.recyclerView_restaurantPage);
 
-    TextView usernameBtn = findViewById(R.id.username_restaurantPage);
-    ImageView usernameImg = findViewById(R.id.profile_restaurantPage);
+    Button usernameBtn = findViewById(R.id.username_restaurantPage);
 
-    TextView settingsBtn = findViewById(R.id.settings_restaurantPage);
-    ImageView settingsImg = findViewById(R.id.settingsImg_restaurantPage);
-
-    ImageView logout = findViewById(R.id.logout_restaurantPage);
+    Button logout = findViewById(R.id.logout_restaurantPage);
 
     Button addFoodBtn = findViewById(R.id.addFood_restaurantPage);
 
     usernameBtn.setOnClickListener(v -> goToProfile());
-
-    usernameImg.setOnClickListener(v -> goToProfile());
-
-    settingsBtn.setOnClickListener(v -> goToSettings());
-
-    settingsImg.setOnClickListener(v -> goToSettings());
 
     logout.setOnClickListener(v -> logout());
 
     addFoodBtn.setOnClickListener(v -> gotoAddFood());
 
     foodPostList = new ArrayList<>();
-    getFoods();
 
     adapterFood = new AdapterFood(foodPostList, new AdapterFood.OnFoodClickListener() {
       @Override
@@ -97,6 +119,8 @@ public class RestaurantActivity extends AppCompatActivity {
         );
         foodPostList.remove(position);
         listItemDeleted();
+        visibleView();
+
       }
 
       @Override
@@ -106,6 +130,7 @@ public class RestaurantActivity extends AppCompatActivity {
         goToFoodDetails.putExtra("foodLabel", foodPostList.get(position).getTitle());
         goToFoodDetails.putExtra("locationLabel", foodPostList.get(position).getLocation());
         goToFoodDetails.putExtra("quantityLabel", foodPostList.get(position).getQuantity());
+        goToFoodDetails.putExtra("typeOfQuantityLabel", foodPostList.get(position).getTypeOfQuantity());
         goToFoodDetails.putExtra("fileNameLabel", foodPostList.get(position).getFileName());
         startActivity(goToFoodDetails);
       }
@@ -120,7 +145,46 @@ public class RestaurantActivity extends AppCompatActivity {
     recyclerView.setLayoutManager(layoutManager);
     recyclerView.setAdapter(adapterFood);
 
+  }
 
+  @Override
+  protected void onResume() {
+    super.onResume();
+
+    foodPostList.clear();
+
+    getFoods();
+
+    foodHandler = new Handler(new Handler.Callback() {
+      @SuppressLint("NotifyDataSetChanged")
+      @Override
+      public boolean handleMessage(@NonNull Message message) {
+        Objects.requireNonNull(recyclerView.getAdapter()).notifyDataSetChanged();
+        return false;
+      }
+    });
+
+    if (foodPostList.size() > 1) {
+      goneView();
+    }
+
+
+  }
+
+  private void goneView(){
+    emptyItemText = findViewById(R.id.emptyItem_respage);
+    emptyItemImg = findViewById(R.id.empty_respage);
+    emptyItemText.setVisibility(View.GONE);
+    emptyItemImg.setVisibility(View.GONE);
+  }
+
+  private void visibleView(){
+    if(foodPostList.size() < 1){
+      emptyItemText = findViewById(R.id.emptyItem_respage);
+      emptyItemImg = findViewById(R.id.empty_respage);
+      emptyItemText.setVisibility(View.VISIBLE);
+      emptyItemImg.setVisibility(View.VISIBLE);
+    }
   }
 
   public void goToProfile() {
@@ -153,15 +217,33 @@ public class RestaurantActivity extends AppCompatActivity {
     Amplify.API.query(ModelQuery.list(FoodPost.class),
         response -> {
           for (FoodPost foodPost : response.getData()) {
-            Log.i(TAG, "getFoods: username from foodpost --> " + foodPost.getRestaurant().getUsername());
-            if (foodPost.getRestaurant().getUsername().equals(getUsername()))
+            Log.i(TAG, "getFoods: username from foods --> " + foodPost.getRestaurant().getUsername());
+            if (foodPost.getRestaurant().getUsername().equals(getUsername())) {
               foodPostList.add(foodPost);
+              handlerTry.sendEmptyMessage(1);
+            }
           }
           foodHandler.sendEmptyMessage(1);
         },
         failure -> Log.i(TAG, "getFoods: ")
     );
 
+  }
+
+  public void getRestaurantDataAPIByName(String name) {
+    Amplify.API.query(
+        ModelQuery.list(Restaurant.class, Restaurant.USERNAME.contains(name)),
+        response -> {
+          for (Restaurant restaurant : response.getData()) {
+            Log.i(TAG, "Restaurant data: " + restaurant);
+            restaurantData = restaurant;
+          }
+          RestaurantDataHandler.sendEmptyMessage(1);
+        },
+        error -> {
+          Log.i(TAG, "Query failure", error);
+        }
+    );
   }
 
   private String getUsername() {

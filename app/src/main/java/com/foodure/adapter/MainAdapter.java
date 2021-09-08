@@ -20,6 +20,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
   public interface OnFoodClickListener {
     void onRequestFood(int position);
+
     void onItemClick(int position);
   }
 
@@ -40,7 +41,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     FoodPost foodPost = foodDetailsList.get(position);
     holder.restaurantLabel.setText(foodPost.getRestaurant().getTitle());
     holder.foodLabel.setText(foodPost.getTitle());
-    String str = "Food type " + foodPost.getType() + "\r\nQuantity: " + foodPost.getQuantity();
+    String str = "Quantity: " + foodPost.getQuantity();
     holder.quantityLabel.setText(str);
 
 
@@ -64,12 +65,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
       restaurantLabel = itemView.findViewById(R.id.restaurant_label_card);
       foodLabel = itemView.findViewById(R.id.food_title_label_card);
       quantityLabel = itemView.findViewById(R.id.quantity_label_card);
-      requestFoodBtn=itemView.findViewById(R.id.request_food_user);
+      requestFoodBtn = itemView.findViewById(R.id.request_food_user);
 
       itemView.setOnClickListener(view -> {
         onFoodClickListener.onItemClick(getBindingAdapterPosition());
       });
-      requestFoodBtn.setOnClickListener(v->{
+      requestFoodBtn.setOnClickListener(v -> {
         onFoodClickListener.onItemClick(getBindingAdapterPosition());
       });
     }

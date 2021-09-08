@@ -48,11 +48,9 @@ subscription OnCreateRestaurant {
       items {
         id
         foodID
-        foodCartID
         title
         quantity
         typeOfQuantity
-        type
         location
         fileName
         _version
@@ -81,11 +79,9 @@ subscription OnUpdateRestaurant {
       items {
         id
         foodID
-        foodCartID
         title
         quantity
         typeOfQuantity
-        type
         location
         fileName
         _version
@@ -114,11 +110,9 @@ subscription OnDeleteRestaurant {
       items {
         id
         foodID
-        foodCartID
         title
         quantity
         typeOfQuantity
-        type
         location
         fileName
         _version
@@ -142,26 +136,6 @@ subscription OnCreateCart {
     id
     username
     location
-    post {
-      items {
-        id
-        foodID
-        foodCartID
-        title
-        quantity
-        typeOfQuantity
-        type
-        location
-        fileName
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
     _version
     _deleted
     _lastChangedAt
@@ -174,26 +148,6 @@ subscription OnUpdateCart {
     id
     username
     location
-    post {
-      items {
-        id
-        foodID
-        foodCartID
-        title
-        quantity
-        typeOfQuantity
-        type
-        location
-        fileName
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
     _version
     _deleted
     _lastChangedAt
@@ -206,26 +160,6 @@ subscription OnDeleteCart {
     id
     username
     location
-    post {
-      items {
-        id
-        foodID
-        foodCartID
-        title
-        quantity
-        typeOfQuantity
-        type
-        location
-        fileName
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
     _version
     _deleted
     _lastChangedAt
@@ -237,11 +171,9 @@ subscription OnCreateFoodPost {
   onCreateFoodPost {
     id
     foodID
-    foodCartID
     title
     quantity
     typeOfQuantity
-    type
     location
     fileName
     restaurant {
@@ -250,20 +182,6 @@ subscription OnCreateFoodPost {
       username
       location
       restaurantPost {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    cart {
-      id
-      username
-      location
-      post {
         nextToken
         startedAt
       }
@@ -284,11 +202,9 @@ subscription OnUpdateFoodPost {
   onUpdateFoodPost {
     id
     foodID
-    foodCartID
     title
     quantity
     typeOfQuantity
-    type
     location
     fileName
     restaurant {
@@ -297,20 +213,6 @@ subscription OnUpdateFoodPost {
       username
       location
       restaurantPost {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    cart {
-      id
-      username
-      location
-      post {
         nextToken
         startedAt
       }
@@ -331,11 +233,9 @@ subscription OnDeleteFoodPost {
   onDeleteFoodPost {
     id
     foodID
-    foodCartID
     title
     quantity
     typeOfQuantity
-    type
     location
     fileName
     restaurant {
@@ -344,20 +244,6 @@ subscription OnDeleteFoodPost {
       username
       location
       restaurantPost {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    cart {
-      id
-      username
-      location
-      post {
         nextToken
         startedAt
       }

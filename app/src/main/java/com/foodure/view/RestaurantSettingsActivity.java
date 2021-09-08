@@ -33,8 +33,6 @@ public class RestaurantSettingsActivity extends AppCompatActivity {
 
     Objects.requireNonNull(getSupportActionBar()).hide();
 
-    ImageView back = findViewById(R.id.back_restaurantSettingsPage);
-
     Button submit = findViewById(R.id.updateSettingsBtn);
 
     TextView resTitle = findViewById(R.id.editRestaurantName_restaurantSettingsPage);
@@ -62,14 +60,13 @@ public class RestaurantSettingsActivity extends AppCompatActivity {
       }
     });
 
-    back.setOnClickListener(v -> back());
-
     submit.setOnClickListener(v -> {
       String title = resTitle.getText().toString();
       Restaurant item = Restaurant.builder().title(title).username(username).location(spinnerLocation).build();
       saveAPI(item);
       Log.i(TAG, "onCreate: title " + title);
       Log.i(TAG, "onCreate: location " + spinnerLocation);
+      back();
     });
   }
 

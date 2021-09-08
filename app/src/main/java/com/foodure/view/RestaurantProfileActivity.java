@@ -2,11 +2,13 @@ package com.foodure.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,9 +26,10 @@ public class RestaurantProfileActivity extends AppCompatActivity {
   private Restaurant restaurant;
   private Handler handler;
   private TextView restaurantName;
-  private TextView accountUsername ;
-  private TextView accountEmail ;
-  private TextView restaurantLocation ;
+  private TextView accountUsername;
+  private TextView restaurantLocation;
+  private ImageView emptyImg;
+  private TextView emptyTxt;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -37,30 +40,42 @@ public class RestaurantProfileActivity extends AppCompatActivity {
     ImageView back = findViewById(R.id.back_restaurantProfilePage);
 
     restaurantName = findViewById(R.id.restaurantName_profile);
-    accountUsername = findViewById(R.id.restaurantUsername_profile) ;
-    accountEmail = findViewById(R.id.restaurantEmail_profile) ;
+    accountUsername = findViewById(R.id.restaurantUsername_profile);
     restaurantLocation = findViewById(R.id.restaurantLocation_profile);
+
+    emptyImg = findViewById(R.id.emptyData_resProfile);
+    emptyTxt = findViewById(R.id.noDataTxt_resProfile);
+
+    restaurantName.setVisibility(View.GONE);
+    accountUsername.setVisibility(View.GONE);
+    restaurantLocation.setVisibility(View.GONE);
 
 
     getRestaurant(Amplify.Auth.getCurrentUser().getUsername());
 
     handler = new Handler(Looper.getMainLooper(),
-            message -> {
-              Log.i(TAG, "onCreate:  "+restaurant.getTitle() );
-              showData();
-              return false;
-            });
-
+        message -> {
+          Log.i(TAG, "onCreate:  " + restaurant.getTitle());
+          showData();
+          return false;
+        });
 
 
     back.setOnClickListener(v -> back());
   }
 
+  @SuppressLint("SetTextI18n")
   private void showData() {
-      restaurantName.setText(restaurant.getTitle());
-      accountUsername.setText(Amplify.Auth.getCurrentUser().getUsername());
-      restaurantLocation.setText(restaurant.getLocation());
+    emptyImg.setVisibility(View.GONE);
+    emptyTxt.setVisibility(View.GONE);
 
+    restaurantName.setText("Restaurant Name: " + restaurant.getTitle());
+    accountUsername.setText("Restaurant Username: " +Amplify.Auth.getCurrentUser().getUsername());
+    restaurantLocation.setText("Restaurant Location: " + restaurant.getLocation());
+
+    restaurantName.setVisibility(View.VISIBLE);
+    accountUsername.setVisibility(View.VISIBLE);
+    restaurantLocation.setVisibility(View.VISIBLE);
   }
 
   public void back() {
@@ -74,17 +89,17 @@ public class RestaurantProfileActivity extends AppCompatActivity {
 
   public void getRestaurant(String name) {
     Amplify.API.query(
-      ModelQuery.list(Restaurant.class, Restaurant.USERNAME.contains(name)),
-      response -> {
-        for (Restaurant res : response.getData()) {
-          Log.i(TAG, "Restaurant Name: " + res.getTitle());
-          restaurant = res;
+        ModelQuery.list(Restaurant.class, Restaurant.USERNAME.contains(name)),
+        response -> {
+          for (Restaurant res : response.getData()) {
+            Log.i(TAG, "Restaurant Name: " + res.getTitle());
+            restaurant = res;
+          }
+          handler.sendEmptyMessage(1);
+        },
+        error -> {
+          Log.i(TAG, "Query failure", error);
         }
-        handler.sendEmptyMessage(1);
-      },
-      error -> {
-        Log.i(TAG, "Query failure", error);
-      }
     );
   }
 }

@@ -45,15 +45,13 @@ public class RestaurantAddFoodActivity extends AppCompatActivity {
   @SuppressLint("SimpleDateFormat")
   static SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
   private static final String FileUploadName = simpleDateFormat.format(new Date());
-  private static String fileUploadExtension = null;
+  private static String fileUploadExtension = "F";
   private static File uploadFile = null;
 
   private TextView foodName;
   private TextView foodQuantity;
-  private TextView foodType;
   private String foodNameStr;
   private String foodQuantityStr;
-  private String foodTypeStr;
 
   @RequiresApi(api = Build.VERSION_CODES.Q)
   @Override
@@ -65,7 +63,6 @@ public class RestaurantAddFoodActivity extends AppCompatActivity {
     ImageView back = findViewById(R.id.back_restaurantAddFoodPage);
     foodName = findViewById(R.id.editFoodName_restaurantAddFoodPage);
     foodQuantity = findViewById(R.id.editTextUsername_restaurantAddFoodPage);
-    foodType = findViewById(R.id.editTextPassword_restaurantAddFoodPage);
 
     Spinner spinner = findViewById(R.id.spinner_location_restaurantAddFoodPage);
     Spinner typeSpinner = findViewById(R.id.spinner_type);
@@ -86,7 +83,7 @@ public class RestaurantAddFoodActivity extends AppCompatActivity {
 
 
     ArrayAdapter<CharSequence> typeAdapter = ArrayAdapter.createFromResource(this,
-            R.array.type_array, android.R.layout.simple_spinner_item);
+        R.array.type_array, android.R.layout.simple_spinner_item);
     typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     typeSpinner.setAdapter(typeAdapter);
 
@@ -136,11 +133,9 @@ public class RestaurantAddFoodActivity extends AppCompatActivity {
   private final View.OnClickListener addFoodCreateListener = v -> {
     foodNameStr = foodName.getText().toString();
     foodQuantityStr = foodQuantity.getText().toString();
-    foodTypeStr = foodType.getText().toString();
     username = Amplify.Auth.getCurrentUser().getUsername();
     Log.i(TAG, "addFood: " + foodNameStr);
     Log.i(TAG, "addFood: " + foodQuantityStr);
-    Log.i(TAG, "addFood: " + foodTypeStr);
     Log.i(TAG, "username: " + username);
     getRestaurantAPIByName(username);
     try {
@@ -154,17 +149,17 @@ public class RestaurantAddFoodActivity extends AppCompatActivity {
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-    FoodPost foodPost = FoodPost.builder().
-        title(foodNameStr).
-        quantity(foodQuantityStr)
-            .typeOfQuantity(spinnerType)
-        .type(foodTypeStr)
+    FoodPost foodPost = FoodPost.builder()
+        .title(foodNameStr)
+        .quantity(foodQuantityStr)
+        .typeOfQuantity(spinnerType)
         .location(spinnerLocation)
         .restaurant(RestaurantsData)
         .fileName(FileUploadName + "." + fileUploadExtension.split("/")[1])
         .build();
     Log.i(TAG, "onCreate: food post>>>>>>>  " + foodPost);
     saveAPI(foodPost);
+    back();
   };
 
   public void getRestaurantAPIByName(String name) {
