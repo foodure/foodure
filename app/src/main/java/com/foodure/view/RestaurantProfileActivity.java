@@ -42,15 +42,16 @@ public class RestaurantProfileActivity extends AppCompatActivity {
     restaurantLocation = findViewById(R.id.restaurantLocation_profile);
 
 
-
+    getRestaurant(Amplify.Auth.getCurrentUser().getUsername());
 
     handler = new Handler(Looper.getMainLooper(),
             message -> {
+              Log.i(TAG, "onCreate:  "+restaurant.getTitle() );
               showData();
               return false;
             });
 
-    getRestaurant();
+
 
     back.setOnClickListener(v -> back());
   }
@@ -71,13 +72,19 @@ public class RestaurantProfileActivity extends AppCompatActivity {
     super.onBackPressed();
   }
 
-  public void getRestaurant(){
-    Amplify.API.query(ModelQuery.get(Restaurant.class, Amplify.Auth.getCurrentUser().getUsername()),
-            response -> {
-              restaurant = response.getData();
-              handler.sendEmptyMessage(1);
-              Log.i(TAG, "success " + response.toString());},
-            error -> Log.e(TAG, "Failed "+ error)
-            );
+  public void getRestaurant(String name) {
+    Amplify.API.query(
+      ModelQuery.list(Restaurant.class, Restaurant.USERNAME.contains(name)),
+      response -> {
+        for (Restaurant res : response.getData()) {
+          Log.i(TAG, "Restaurant Name: " + res.getTitle());
+          restaurant = res;
+        }
+        handler.sendEmptyMessage(1);
+      },
+      error -> {
+        Log.i(TAG, "Query failure", error);
+      }
+    );
   }
 }
