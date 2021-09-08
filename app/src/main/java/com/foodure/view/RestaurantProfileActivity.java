@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Account;
+import com.amplifyframework.datastore.generated.model.Restaurant;
 import com.foodure.R;
 
 import java.util.Objects;
@@ -20,9 +21,12 @@ import java.util.Objects;
 public class RestaurantProfileActivity extends AppCompatActivity {
 
   private static final String TAG = "RestaurantProfileActivity";
-  private Account account;
+  private Restaurant restaurant;
   private Handler handler;
   private TextView restaurantName;
+  private TextView accountUsername ;
+  private TextView accountEmail ;
+  private TextView restaurantLocation ;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,12 @@ public class RestaurantProfileActivity extends AppCompatActivity {
     ImageView back = findViewById(R.id.back_restaurantProfilePage);
 
     restaurantName = findViewById(R.id.restaurantName_profile);
+    accountUsername = findViewById(R.id.restaurantUsername_profile) ;
+    accountEmail = findViewById(R.id.restaurantEmail_profile) ;
+    restaurantLocation = findViewById(R.id.restaurantLocation_profile);
+
+
+
 
     handler = new Handler(Looper.getMainLooper(),
             message -> {
@@ -40,10 +50,15 @@ public class RestaurantProfileActivity extends AppCompatActivity {
               return false;
             });
 
+    getRestaurant();
+
     back.setOnClickListener(v -> back());
   }
 
   private void showData() {
+      restaurantName.setText(restaurant.getTitle());
+      accountUsername.setText(Amplify.Auth.getCurrentUser().getUsername());
+      restaurantLocation.setText(restaurant.getLocation());
 
   }
 
@@ -56,12 +71,12 @@ public class RestaurantProfileActivity extends AppCompatActivity {
     super.onBackPressed();
   }
 
-  public void getAccount(){
-    Amplify.API.query(ModelQuery.get(Account.class, Amplify.Auth.getCurrentUser().getUserId()),
+  public void getRestaurant(){
+    Amplify.API.query(ModelQuery.get(Restaurant.class, Amplify.Auth.getCurrentUser().getUsername()),
             response -> {
-              account = response.getData();
+              restaurant = response.getData();
               handler.sendEmptyMessage(1);
-              Log.i(TAG, "success ");},
+              Log.i(TAG, "success " + response.toString());},
             error -> Log.e(TAG, "Failed "+ error)
             );
   }
