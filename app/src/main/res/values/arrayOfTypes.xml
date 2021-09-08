@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="type_array">
+        <item>Piece</item>
+        <item>Meal</item>
+        <item>Sandwich</item>
+        <item>Can</item>
+    </string-array>
+</resources>

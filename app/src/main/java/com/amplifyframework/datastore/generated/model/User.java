@@ -1,6 +1,5 @@
 package com.amplifyframework.datastore.generated.model;
 
-import com.amplifyframework.core.model.annotations.HasMany;
 import com.amplifyframework.core.model.temporal.Temporal;
 
 import java.util.List;
@@ -17,17 +16,22 @@ import com.amplifyframework.core.model.query.predicate.QueryField;
 
 import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 
-/** This is an auto generated class representing the Cart type in your schema. */
+/** This is an auto generated class representing the User type in your schema. */
 @SuppressWarnings("all")
-@ModelConfig(pluralName = "Carts")
-public final class Cart implements Model {
-  public static final QueryField ID = field("Cart", "id");
-  public static final QueryField USERNAME = field("Cart", "username");
-  public static final QueryField LOCATION = field("Cart", "location");
+@ModelConfig(pluralName = "Users")
+public final class User implements Model {
+  public static final QueryField ID = field("User", "id");
+  public static final QueryField USERNAME = field("User", "username");
+  public static final QueryField FIRST_NAME = field("User", "firstName");
+  public static final QueryField LAST_NAME = field("User", "lastName");
+  public static final QueryField AGE = field("User", "age");
+  public static final QueryField LOCATION = field("User", "location");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String username;
+  private final @ModelField(targetType="String") String firstName;
+  private final @ModelField(targetType="String") String lastName;
+  private final @ModelField(targetType="Int") Integer age;
   private final @ModelField(targetType="String", isRequired = true) String location;
-  private final @ModelField(targetType="FoodPost", isRequired = true) @HasMany(associatedWith = "cart", type = FoodPost.class) List<FoodPost> post = null;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
@@ -38,12 +42,20 @@ public final class Cart implements Model {
       return username;
   }
   
-  public String getLocation() {
-      return location;
+  public String getFirstName() {
+      return firstName;
   }
   
-  public List<FoodPost> getPost() {
-      return post;
+  public String getLastName() {
+      return lastName;
+  }
+  
+  public Integer getAge() {
+      return age;
+  }
+  
+  public String getLocation() {
+      return location;
   }
   
   public Temporal.DateTime getCreatedAt() {
@@ -54,9 +66,12 @@ public final class Cart implements Model {
       return updatedAt;
   }
   
-  private Cart(String id, String username, String location) {
+  private User(String id, String username, String firstName, String lastName, Integer age, String location) {
     this.id = id;
     this.username = username;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
     this.location = location;
   }
   
@@ -67,12 +82,15 @@ public final class Cart implements Model {
       } else if(obj == null || getClass() != obj.getClass()) {
         return false;
       } else {
-      Cart cart = (Cart) obj;
-      return ObjectsCompat.equals(getId(), cart.getId()) &&
-              ObjectsCompat.equals(getUsername(), cart.getUsername()) &&
-              ObjectsCompat.equals(getLocation(), cart.getLocation()) &&
-              ObjectsCompat.equals(getCreatedAt(), cart.getCreatedAt()) &&
-              ObjectsCompat.equals(getUpdatedAt(), cart.getUpdatedAt());
+      User user = (User) obj;
+      return ObjectsCompat.equals(getId(), user.getId()) &&
+              ObjectsCompat.equals(getUsername(), user.getUsername()) &&
+              ObjectsCompat.equals(getFirstName(), user.getFirstName()) &&
+              ObjectsCompat.equals(getLastName(), user.getLastName()) &&
+              ObjectsCompat.equals(getAge(), user.getAge()) &&
+              ObjectsCompat.equals(getLocation(), user.getLocation()) &&
+              ObjectsCompat.equals(getCreatedAt(), user.getCreatedAt()) &&
+              ObjectsCompat.equals(getUpdatedAt(), user.getUpdatedAt());
       }
   }
   
@@ -81,6 +99,9 @@ public final class Cart implements Model {
     return new StringBuilder()
       .append(getId())
       .append(getUsername())
+      .append(getFirstName())
+      .append(getLastName())
+      .append(getAge())
       .append(getLocation())
       .append(getCreatedAt())
       .append(getUpdatedAt())
@@ -91,9 +112,12 @@ public final class Cart implements Model {
   @Override
    public String toString() {
     return new StringBuilder()
-      .append("Cart {")
+      .append("User {")
       .append("id=" + String.valueOf(getId()) + ", ")
       .append("username=" + String.valueOf(getUsername()) + ", ")
+      .append("firstName=" + String.valueOf(getFirstName()) + ", ")
+      .append("lastName=" + String.valueOf(getLastName()) + ", ")
+      .append("age=" + String.valueOf(getAge()) + ", ")
       .append("location=" + String.valueOf(getLocation()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
@@ -114,7 +138,7 @@ public final class Cart implements Model {
    * @return an instance of this model with only ID populated
    * @throws IllegalArgumentException Checks that ID is in the proper format
    */
-  public static Cart justId(String id) {
+  public static User justId(String id) {
     try {
       UUID.fromString(id); // Check that ID is in the UUID format - if not an exception is thrown
     } catch (Exception exception) {
@@ -124,8 +148,11 @@ public final class Cart implements Model {
               "creating a new object, use the standard builder method and leave the ID field blank."
       );
     }
-    return new Cart(
+    return new User(
       id,
+      null,
+      null,
+      null,
       null,
       null
     );
@@ -134,6 +161,9 @@ public final class Cart implements Model {
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
       username,
+      firstName,
+      lastName,
+      age,
       location);
   }
   public interface UsernameStep {
@@ -147,8 +177,11 @@ public final class Cart implements Model {
   
 
   public interface BuildStep {
-    Cart build();
+    User build();
     BuildStep id(String id) throws IllegalArgumentException;
+    BuildStep firstName(String firstName);
+    BuildStep lastName(String lastName);
+    BuildStep age(Integer age);
   }
   
 
@@ -156,13 +189,19 @@ public final class Cart implements Model {
     private String id;
     private String username;
     private String location;
+    private String firstName;
+    private String lastName;
+    private Integer age;
     @Override
-     public Cart build() {
+     public User build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
         
-        return new Cart(
+        return new User(
           id,
           username,
+          firstName,
+          lastName,
+          age,
           location);
     }
     
@@ -177,6 +216,24 @@ public final class Cart implements Model {
      public BuildStep location(String location) {
         Objects.requireNonNull(location);
         this.location = location;
+        return this;
+    }
+    
+    @Override
+     public BuildStep firstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+    
+    @Override
+     public BuildStep lastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+    
+    @Override
+     public BuildStep age(Integer age) {
+        this.age = age;
         return this;
     }
     
@@ -203,10 +260,13 @@ public final class Cart implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String username, String location) {
+    private CopyOfBuilder(String id, String username, String firstName, String lastName, Integer age, String location) {
       super.id(id);
       super.username(username)
-        .location(location);
+        .location(location)
+        .firstName(firstName)
+        .lastName(lastName)
+        .age(age);
     }
     
     @Override
@@ -217,6 +277,21 @@ public final class Cart implements Model {
     @Override
      public CopyOfBuilder location(String location) {
       return (CopyOfBuilder) super.location(location);
+    }
+    
+    @Override
+     public CopyOfBuilder firstName(String firstName) {
+      return (CopyOfBuilder) super.firstName(firstName);
+    }
+    
+    @Override
+     public CopyOfBuilder lastName(String lastName) {
+      return (CopyOfBuilder) super.lastName(lastName);
+    }
+    
+    @Override
+     public CopyOfBuilder age(Integer age) {
+      return (CopyOfBuilder) super.age(age);
     }
   }
   

@@ -38,6 +38,7 @@ public class RestaurantAddFoodActivity extends AppCompatActivity {
   private static final String TAG = "RestaurantAddFoodActivity";
   private String username = null;
   private String spinnerLocation = null;
+  private String spinnerType = null;
   private Restaurant RestaurantsData = null;
 
   static String pattern = "yyMMddHHmmssZ";
@@ -50,7 +51,6 @@ public class RestaurantAddFoodActivity extends AppCompatActivity {
   private TextView foodName;
   private TextView foodQuantity;
   private TextView foodType;
-
   private String foodNameStr;
   private String foodQuantityStr;
   private String foodTypeStr;
@@ -68,6 +68,7 @@ public class RestaurantAddFoodActivity extends AppCompatActivity {
     foodType = findViewById(R.id.editTextPassword_restaurantAddFoodPage);
 
     Spinner spinner = findViewById(R.id.spinner_location_restaurantAddFoodPage);
+    Spinner typeSpinner = findViewById(R.id.spinner_type);
     Button addFoodBtn = findViewById(R.id.addFood_restaurantAddFoodPage);
 
     Intent intent = getIntent();
@@ -82,6 +83,25 @@ public class RestaurantAddFoodActivity extends AppCompatActivity {
 
     Button uploadFile = findViewById(R.id.addImage_restaurantAddFoodPage);
     uploadFile.setOnClickListener(v1 -> getFileFromDevice());
+
+
+    ArrayAdapter<CharSequence> typeAdapter = ArrayAdapter.createFromResource(this,
+            R.array.type_array, android.R.layout.simple_spinner_item);
+    typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    typeSpinner.setAdapter(typeAdapter);
+
+    typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+      @Override
+      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        spinnerType = (String) parent.getItemAtPosition(position);
+        System.out.println(spinnerType);
+      }
+
+      @Override
+      public void onNothingSelected(AdapterView<?> parent) {
+        spinnerType = (String) parent.getItemAtPosition(0);
+      }
+    });
 
     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.location_array,
         android.R.layout.simple_spinner_item);
@@ -137,6 +157,7 @@ public class RestaurantAddFoodActivity extends AppCompatActivity {
     FoodPost foodPost = FoodPost.builder().
         title(foodNameStr).
         quantity(foodQuantityStr)
+            .typeOfQuantity(spinnerType)
         .type(foodTypeStr)
         .location(spinnerLocation)
         .restaurant(RestaurantsData)

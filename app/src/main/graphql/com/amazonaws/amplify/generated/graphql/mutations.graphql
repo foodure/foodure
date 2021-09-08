@@ -1,298 +1,466 @@
 # this is an auto generated file. This will be overwritten
 mutation CreateAccount(
-    $input: CreateAccountInput!
-    $condition: ModelAccountConditionInput
+  $input: CreateAccountInput!
+  $condition: ModelAccountConditionInput
 ) {
-    createAccount(input: $input, condition: $condition) {
-        id
-        username
-        location
-        type
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-    }
+  createAccount(input: $input, condition: $condition) {
+    id
+    username
+    location
+    type
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
 mutation UpdateAccount(
-    $input: UpdateAccountInput!
-    $condition: ModelAccountConditionInput
+  $input: UpdateAccountInput!
+  $condition: ModelAccountConditionInput
 ) {
-    updateAccount(input: $input, condition: $condition) {
-        id
-        username
-        location
-        type
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-    }
+  updateAccount(input: $input, condition: $condition) {
+    id
+    username
+    location
+    type
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
 mutation DeleteAccount(
-    $input: DeleteAccountInput!
-    $condition: ModelAccountConditionInput
+  $input: DeleteAccountInput!
+  $condition: ModelAccountConditionInput
 ) {
-    deleteAccount(input: $input, condition: $condition) {
-        id
-        username
-        location
-        type
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-    }
+  deleteAccount(input: $input, condition: $condition) {
+    id
+    username
+    location
+    type
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
 mutation CreateRestaurant(
-    $input: CreateRestaurantInput!
-    $condition: ModelRestaurantConditionInput
+  $input: CreateRestaurantInput!
+  $condition: ModelRestaurantConditionInput
 ) {
-    createRestaurant(input: $input, condition: $condition) {
+  createRestaurant(input: $input, condition: $condition) {
+    id
+    title
+    username
+    location
+    restaurantPost {
+      items {
         id
+        foodID
+        foodCartID
         title
-        username
+        quantity
+        typeOfQuantity
+        type
         location
-        restaurantPost {
-            items {
-                id
-                foodID
-                title
-                quantity
-                type
-                location
-                fileName
-                _version
-                _deleted
-                _lastChangedAt
-                createdAt
-                updatedAt
-            }
-            nextToken
-            startedAt
-        }
+        fileName
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
+      }
+      nextToken
+      startedAt
     }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
 mutation UpdateRestaurant(
-    $input: UpdateRestaurantInput!
-    $condition: ModelRestaurantConditionInput
+  $input: UpdateRestaurantInput!
+  $condition: ModelRestaurantConditionInput
 ) {
-    updateRestaurant(input: $input, condition: $condition) {
+  updateRestaurant(input: $input, condition: $condition) {
+    id
+    title
+    username
+    location
+    restaurantPost {
+      items {
         id
+        foodID
+        foodCartID
         title
-        username
+        quantity
+        typeOfQuantity
+        type
         location
-        restaurantPost {
-            items {
-                id
-                foodID
-                title
-                quantity
-                type
-                location
-                fileName
-                _version
-                _deleted
-                _lastChangedAt
-                createdAt
-                updatedAt
-            }
-            nextToken
-            startedAt
-        }
+        fileName
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
+      }
+      nextToken
+      startedAt
     }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
 mutation DeleteRestaurant(
-    $input: DeleteRestaurantInput!
-    $condition: ModelRestaurantConditionInput
+  $input: DeleteRestaurantInput!
+  $condition: ModelRestaurantConditionInput
 ) {
-    deleteRestaurant(input: $input, condition: $condition) {
-        id
-        title
-        username
-        location
-        restaurantPost {
-            items {
-                id
-                foodID
-                title
-                quantity
-                type
-                location
-                fileName
-                _version
-                _deleted
-                _lastChangedAt
-                createdAt
-                updatedAt
-            }
-            nextToken
-            startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-    }
-}
-mutation CreateFoodPost(
-    $input: CreateFoodPostInput!
-    $condition: ModelFoodPostConditionInput
-) {
-    createFoodPost(input: $input, condition: $condition) {
+  deleteRestaurant(input: $input, condition: $condition) {
+    id
+    title
+    username
+    location
+    restaurantPost {
+      items {
         id
         foodID
+        foodCartID
         title
         quantity
+        typeOfQuantity
         type
         location
         fileName
-        restaurant {
-            id
-            title
-            username
-            location
-            restaurantPost {
-                nextToken
-                startedAt
-            }
-            _version
-            _deleted
-            _lastChangedAt
-            createdAt
-            updatedAt
-        }
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
+      }
+      nextToken
+      startedAt
     }
-}
-mutation UpdateFoodPost(
-    $input: UpdateFoodPostInput!
-    $condition: ModelFoodPostConditionInput
-) {
-    updateFoodPost(input: $input, condition: $condition) {
-        id
-        foodID
-        title
-        quantity
-        type
-        location
-        fileName
-        restaurant {
-            id
-            title
-            username
-            location
-            restaurantPost {
-                nextToken
-                startedAt
-            }
-            _version
-            _deleted
-            _lastChangedAt
-            createdAt
-            updatedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-    }
-}
-mutation DeleteFoodPost(
-    $input: DeleteFoodPostInput!
-    $condition: ModelFoodPostConditionInput
-) {
-    deleteFoodPost(input: $input, condition: $condition) {
-        id
-        foodID
-        title
-        quantity
-        type
-        location
-        fileName
-        restaurant {
-            id
-            title
-            username
-            location
-            restaurantPost {
-                nextToken
-                startedAt
-            }
-            _version
-            _deleted
-            _lastChangedAt
-            createdAt
-            updatedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
 mutation CreateCart(
-    $input: CreateCartInput!
-    $condition: ModelCartConditionInput
+  $input: CreateCartInput!
+  $condition: ModelCartConditionInput
 ) {
-    createCart(input: $input, condition: $condition) {
+  createCart(input: $input, condition: $condition) {
+    id
+    username
+    location
+    post {
+      items {
         id
-        username
+        foodID
+        foodCartID
+        title
+        quantity
+        typeOfQuantity
+        type
         location
+        fileName
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
+      }
+      nextToken
+      startedAt
     }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
 mutation UpdateCart(
-    $input: UpdateCartInput!
-    $condition: ModelCartConditionInput
+  $input: UpdateCartInput!
+  $condition: ModelCartConditionInput
 ) {
-    updateCart(input: $input, condition: $condition) {
+  updateCart(input: $input, condition: $condition) {
+    id
+    username
+    location
+    post {
+      items {
         id
-        username
+        foodID
+        foodCartID
+        title
+        quantity
+        typeOfQuantity
+        type
         location
+        fileName
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
+      }
+      nextToken
+      startedAt
     }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
 mutation DeleteCart(
-    $input: DeleteCartInput!
-    $condition: ModelCartConditionInput
+  $input: DeleteCartInput!
+  $condition: ModelCartConditionInput
 ) {
-    deleteCart(input: $input, condition: $condition) {
+  deleteCart(input: $input, condition: $condition) {
+    id
+    username
+    location
+    post {
+      items {
         id
-        username
+        foodID
+        foodCartID
+        title
+        quantity
+        typeOfQuantity
+        type
         location
+        fileName
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
+      }
+      nextToken
+      startedAt
     }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateFoodPost(
+  $input: CreateFoodPostInput!
+  $condition: ModelFoodPostConditionInput
+) {
+  createFoodPost(input: $input, condition: $condition) {
+    id
+    foodID
+    foodCartID
+    title
+    quantity
+    typeOfQuantity
+    type
+    location
+    fileName
+    restaurant {
+      id
+      title
+      username
+      location
+      restaurantPost {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    cart {
+      id
+      username
+      location
+      post {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateFoodPost(
+  $input: UpdateFoodPostInput!
+  $condition: ModelFoodPostConditionInput
+) {
+  updateFoodPost(input: $input, condition: $condition) {
+    id
+    foodID
+    foodCartID
+    title
+    quantity
+    typeOfQuantity
+    type
+    location
+    fileName
+    restaurant {
+      id
+      title
+      username
+      location
+      restaurantPost {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    cart {
+      id
+      username
+      location
+      post {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteFoodPost(
+  $input: DeleteFoodPostInput!
+  $condition: ModelFoodPostConditionInput
+) {
+  deleteFoodPost(input: $input, condition: $condition) {
+    id
+    foodID
+    foodCartID
+    title
+    quantity
+    typeOfQuantity
+    type
+    location
+    fileName
+    restaurant {
+      id
+      title
+      username
+      location
+      restaurantPost {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    cart {
+      id
+      username
+      location
+      post {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateUser(
+  $input: CreateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  createUser(input: $input, condition: $condition) {
+    id
+    username
+    firstName
+    lastName
+    age
+    location
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateUser(
+  $input: UpdateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  updateUser(input: $input, condition: $condition) {
+    id
+    username
+    firstName
+    lastName
+    age
+    location
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteUser(
+  $input: DeleteUserInput!
+  $condition: ModelUserConditionInput
+) {
+  deleteUser(input: $input, condition: $condition) {
+    id
+    username
+    firstName
+    lastName
+    age
+    location
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
 }
