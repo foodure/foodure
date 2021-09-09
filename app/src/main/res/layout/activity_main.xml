@@ -103,7 +103,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/requestedFood_homePage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -113,7 +113,7 @@
             android:background="@drawable/round_bg_green"
             android:drawableStart="@drawable/ic_picnic_basket"
             android:padding="16dp"
-            android:text="Move To Cart"
+            android:text="Requested Food"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

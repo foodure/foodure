@@ -71,7 +71,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         onFoodClickListener.onItemClick(getBindingAdapterPosition());
       });
       requestFoodBtn.setOnClickListener(v -> {
-        onFoodClickListener.onItemClick(getBindingAdapterPosition());
+        onFoodClickListener.onRequestFood(getBindingAdapterPosition());
       });
     }
   }

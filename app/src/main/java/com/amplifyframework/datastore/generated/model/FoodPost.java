@@ -21,31 +21,28 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 @SuppressWarnings("all")
 @ModelConfig(pluralName = "FoodPosts")
 @Index(name = "foodItem", fields = {"foodID"})
+@Index(name = "cartItem", fields = {"foodCartID"})
 public final class FoodPost implements Model {
   public static final QueryField ID = field("FoodPost", "id");
-  public static final QueryField REQUESTED = field("FoodPost", "requested");
   public static final QueryField TITLE = field("FoodPost", "title");
   public static final QueryField QUANTITY = field("FoodPost", "quantity");
   public static final QueryField TYPE_OF_QUANTITY = field("FoodPost", "typeOfQuantity");
   public static final QueryField LOCATION = field("FoodPost", "location");
   public static final QueryField FILE_NAME = field("FoodPost", "fileName");
   public static final QueryField RESTAURANT = field("FoodPost", "foodID");
+  public static final QueryField CART = field("FoodPost", "foodCartID");
   private final @ModelField(targetType="ID", isRequired = true) String id;
-  private final @ModelField(targetType="String") String requested;
   private final @ModelField(targetType="String", isRequired = true) String title;
   private final @ModelField(targetType="String", isRequired = true) String quantity;
   private final @ModelField(targetType="String", isRequired = true) String typeOfQuantity;
   private final @ModelField(targetType="String", isRequired = true) String location;
   private final @ModelField(targetType="String") String fileName;
   private final @ModelField(targetType="Restaurant", isRequired = true) @BelongsTo(targetName = "foodID", type = Restaurant.class) Restaurant restaurant;
+  private final @ModelField(targetType="Cart") @BelongsTo(targetName = "foodCartID", type = Cart.class) Cart cart;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
       return id;
-  }
-  
-  public String getRequested() {
-      return requested;
   }
   
   public String getTitle() {
@@ -72,6 +69,10 @@ public final class FoodPost implements Model {
       return restaurant;
   }
   
+  public Cart getCart() {
+      return cart;
+  }
+  
   public Temporal.DateTime getCreatedAt() {
       return createdAt;
   }
@@ -80,15 +81,15 @@ public final class FoodPost implements Model {
       return updatedAt;
   }
   
-  private FoodPost(String id, String requested, String title, String quantity, String typeOfQuantity, String location, String fileName, Restaurant restaurant) {
+  private FoodPost(String id, String title, String quantity, String typeOfQuantity, String location, String fileName, Restaurant restaurant, Cart cart) {
     this.id = id;
-    this.requested = requested;
     this.title = title;
     this.quantity = quantity;
     this.typeOfQuantity = typeOfQuantity;
     this.location = location;
     this.fileName = fileName;
     this.restaurant = restaurant;
+    this.cart = cart;
   }
   
   @Override
@@ -100,13 +101,13 @@ public final class FoodPost implements Model {
       } else {
       FoodPost foodPost = (FoodPost) obj;
       return ObjectsCompat.equals(getId(), foodPost.getId()) &&
-              ObjectsCompat.equals(getRequested(), foodPost.getRequested()) &&
               ObjectsCompat.equals(getTitle(), foodPost.getTitle()) &&
               ObjectsCompat.equals(getQuantity(), foodPost.getQuantity()) &&
               ObjectsCompat.equals(getTypeOfQuantity(), foodPost.getTypeOfQuantity()) &&
               ObjectsCompat.equals(getLocation(), foodPost.getLocation()) &&
               ObjectsCompat.equals(getFileName(), foodPost.getFileName()) &&
               ObjectsCompat.equals(getRestaurant(), foodPost.getRestaurant()) &&
+              ObjectsCompat.equals(getCart(), foodPost.getCart()) &&
               ObjectsCompat.equals(getCreatedAt(), foodPost.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), foodPost.getUpdatedAt());
       }
@@ -116,13 +117,13 @@ public final class FoodPost implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
-      .append(getRequested())
       .append(getTitle())
       .append(getQuantity())
       .append(getTypeOfQuantity())
       .append(getLocation())
       .append(getFileName())
       .append(getRestaurant())
+      .append(getCart())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -134,13 +135,13 @@ public final class FoodPost implements Model {
     return new StringBuilder()
       .append("FoodPost {")
       .append("id=" + String.valueOf(getId()) + ", ")
-      .append("requested=" + String.valueOf(getRequested()) + ", ")
       .append("title=" + String.valueOf(getTitle()) + ", ")
       .append("quantity=" + String.valueOf(getQuantity()) + ", ")
       .append("typeOfQuantity=" + String.valueOf(getTypeOfQuantity()) + ", ")
       .append("location=" + String.valueOf(getLocation()) + ", ")
       .append("fileName=" + String.valueOf(getFileName()) + ", ")
       .append("restaurant=" + String.valueOf(getRestaurant()) + ", ")
+      .append("cart=" + String.valueOf(getCart()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
@@ -184,13 +185,13 @@ public final class FoodPost implements Model {
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
-      requested,
       title,
       quantity,
       typeOfQuantity,
       location,
       fileName,
-      restaurant);
+      restaurant,
+      cart);
   }
   public interface TitleStep {
     QuantityStep title(String title);
@@ -220,8 +221,8 @@ public final class FoodPost implements Model {
   public interface BuildStep {
     FoodPost build();
     BuildStep id(String id) throws IllegalArgumentException;
-    BuildStep requested(String requested);
     BuildStep fileName(String fileName);
+    BuildStep cart(Cart cart);
   }
   
 
@@ -232,21 +233,21 @@ public final class FoodPost implements Model {
     private String typeOfQuantity;
     private String location;
     private Restaurant restaurant;
-    private String requested;
     private String fileName;
+    private Cart cart;
     @Override
      public FoodPost build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
         
         return new FoodPost(
           id,
-          requested,
           title,
           quantity,
           typeOfQuantity,
           location,
           fileName,
-          restaurant);
+          restaurant,
+          cart);
     }
     
     @Override
@@ -285,14 +286,14 @@ public final class FoodPost implements Model {
     }
     
     @Override
-     public BuildStep requested(String requested) {
-        this.requested = requested;
+     public BuildStep fileName(String fileName) {
+        this.fileName = fileName;
         return this;
     }
     
     @Override
-     public BuildStep fileName(String fileName) {
-        this.fileName = fileName;
+     public BuildStep cart(Cart cart) {
+        this.cart = cart;
         return this;
     }
     
@@ -308,15 +309,15 @@ public final class FoodPost implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String requested, String title, String quantity, String typeOfQuantity, String location, String fileName, Restaurant restaurant) {
+    private CopyOfBuilder(String id, String title, String quantity, String typeOfQuantity, String location, String fileName, Restaurant restaurant, Cart cart) {
       super.id(id);
       super.title(title)
         .quantity(quantity)
         .typeOfQuantity(typeOfQuantity)
         .location(location)
         .restaurant(restaurant)
-        .requested(requested)
-        .fileName(fileName);
+        .fileName(fileName)
+        .cart(cart);
     }
     
     @Override
@@ -345,13 +346,13 @@ public final class FoodPost implements Model {
     }
     
     @Override
-     public CopyOfBuilder requested(String requested) {
-      return (CopyOfBuilder) super.requested(requested);
+     public CopyOfBuilder fileName(String fileName) {
+      return (CopyOfBuilder) super.fileName(fileName);
     }
     
     @Override
-     public CopyOfBuilder fileName(String fileName) {
-      return (CopyOfBuilder) super.fileName(fileName);
+     public CopyOfBuilder cart(Cart cart) {
+      return (CopyOfBuilder) super.cart(cart);
     }
   }
   

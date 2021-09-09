@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
@@ -33,9 +34,11 @@ public class SettingsActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
 
-        ImageView back = findViewById(R.id.back_detailspage);
         Button submit = findViewById(R.id.updateSettingsBtn_user);
         username = Amplify.Auth.getCurrentUser().getUsername();
+        EditText firstName = findViewById(R.id.firstName_userSettingsPage);
+        EditText lastName = findViewById(R.id.lastName_userSettingsPage);
+        EditText age = findViewById(R.id.age_userSettingsPage);
         Spinner spinner = findViewById(R.id.spinner_location_userSettingsPage);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -55,13 +58,23 @@ public class SettingsActivity extends AppCompatActivity {
                 spinnerLocation = (String) parent.getItemAtPosition(0);
             }
         });
-        back.setOnClickListener(v -> back());
 
         submit.setOnClickListener(v -> {
-            User item = User.builder().username(username).location(spinnerLocation).build();
+            String getFirstName = firstName.getText().toString();
+            String getLastName = lastName.getText().toString();
+            int getAge = Integer.parseInt(age.getText().toString());
+
+            User item = User.builder()
+                .username(username)
+                .firstName(getFirstName)
+                .lastName(getLastName)
+                .age(getAge)
+                .location(spinnerLocation)
+                .build();
             saveAPI(item);
             Log.i(TAG, "onCreate: title " + username);
             Log.i(TAG, "onCreate: location " + spinnerLocation);
+            back();
         });
     }
 

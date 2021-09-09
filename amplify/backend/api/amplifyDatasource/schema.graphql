@@ -13,20 +13,28 @@ type Restaurant @model {
     restaurantPost: [FoodPost] @connection(keyName: "foodItem", fields: ["id"])
 }
 
-
+type Cart @model
+{
+    id: ID!
+    username: String!
+    location : String!
+    cartPost:[FoodPost]! @connection(keyName: "cartItem", fields: ["id"])
+}
 
 type FoodPost @model
 @key(name: "foodItem", fields: ["foodID"])
+@key(name: "cartItem", fields: ["foodCartID"])
 {
     id: ID!
     foodID: ID!
-    requested: String
+    foodCartID: ID!
     title: String!
     quantity: String!
     typeOfQuantity: String!
     location : String!
     fileName: String
     restaurant: Restaurant! @connection(fields: ["foodID"])
+    cart: Cart @connection(fields: ["foodCartID"])
 }
 
 
@@ -34,8 +42,8 @@ type FoodPost @model
 type User @model {
     id: ID!
     username: String!
-    firstName: String
-    lastName: String
-    age: Int
+    firstName: String!
+    lastName: String!
+    age: Int!
     location: String!
 }

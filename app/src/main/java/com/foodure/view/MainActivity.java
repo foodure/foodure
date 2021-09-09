@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String QUANTITYLABEL = "quantityLabel";
     public static final String FILENAMELABEL = "fileNameLabel";
 
+    Button btnRequestedFood;
+
     RecyclerView recyclerView;
     Handler handler;
     MainAdapter userAdapter;
@@ -81,6 +83,13 @@ public class MainActivity extends AppCompatActivity {
 
         Button usernameBtn = findViewById(R.id.username_homePage);
         Button logout = findViewById(R.id.logout_home);
+
+        btnRequestedFood = findViewById(R.id.requestedFood_homePage);
+
+        btnRequestedFood.setOnClickListener(view -> {
+            Intent goToRequestedFood = new Intent(MainActivity.this, RequestedFoodActivity.class);
+            startActivity(goToRequestedFood);
+        });
 
 
         usernameBtn.setOnClickListener(v -> goToProfile());

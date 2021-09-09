@@ -28,9 +28,9 @@ public final class User implements Model {
   public static final QueryField LOCATION = field("User", "location");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String username;
-  private final @ModelField(targetType="String") String firstName;
-  private final @ModelField(targetType="String") String lastName;
-  private final @ModelField(targetType="Int") Integer age;
+  private final @ModelField(targetType="String", isRequired = true) String firstName;
+  private final @ModelField(targetType="String", isRequired = true) String lastName;
+  private final @ModelField(targetType="Int", isRequired = true) Integer age;
   private final @ModelField(targetType="String", isRequired = true) String location;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
@@ -167,7 +167,22 @@ public final class User implements Model {
       location);
   }
   public interface UsernameStep {
-    LocationStep username(String username);
+    FirstNameStep username(String username);
+  }
+  
+
+  public interface FirstNameStep {
+    LastNameStep firstName(String firstName);
+  }
+  
+
+  public interface LastNameStep {
+    AgeStep lastName(String lastName);
+  }
+  
+
+  public interface AgeStep {
+    LocationStep age(Integer age);
   }
   
 
@@ -179,19 +194,16 @@ public final class User implements Model {
   public interface BuildStep {
     User build();
     BuildStep id(String id) throws IllegalArgumentException;
-    BuildStep firstName(String firstName);
-    BuildStep lastName(String lastName);
-    BuildStep age(Integer age);
   }
   
 
-  public static class Builder implements UsernameStep, LocationStep, BuildStep {
+  public static class Builder implements UsernameStep, FirstNameStep, LastNameStep, AgeStep, LocationStep, BuildStep {
     private String id;
     private String username;
-    private String location;
     private String firstName;
     private String lastName;
     private Integer age;
+    private String location;
     @Override
      public User build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -206,9 +218,30 @@ public final class User implements Model {
     }
     
     @Override
-     public LocationStep username(String username) {
+     public FirstNameStep username(String username) {
         Objects.requireNonNull(username);
         this.username = username;
+        return this;
+    }
+    
+    @Override
+     public LastNameStep firstName(String firstName) {
+        Objects.requireNonNull(firstName);
+        this.firstName = firstName;
+        return this;
+    }
+    
+    @Override
+     public AgeStep lastName(String lastName) {
+        Objects.requireNonNull(lastName);
+        this.lastName = lastName;
+        return this;
+    }
+    
+    @Override
+     public LocationStep age(Integer age) {
+        Objects.requireNonNull(age);
+        this.age = age;
         return this;
     }
     
@@ -216,24 +249,6 @@ public final class User implements Model {
      public BuildStep location(String location) {
         Objects.requireNonNull(location);
         this.location = location;
-        return this;
-    }
-    
-    @Override
-     public BuildStep firstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-    
-    @Override
-     public BuildStep lastName(String lastName) {
-        this.lastName = lastName;
-        return this;
-    }
-    
-    @Override
-     public BuildStep age(Integer age) {
-        this.age = age;
         return this;
     }
     
@@ -252,20 +267,15 @@ public final class User implements Model {
     private CopyOfBuilder(String id, String username, String firstName, String lastName, Integer age, String location) {
       super.id(id);
       super.username(username)
-        .location(location)
         .firstName(firstName)
         .lastName(lastName)
-        .age(age);
+        .age(age)
+        .location(location);
     }
     
     @Override
      public CopyOfBuilder username(String username) {
       return (CopyOfBuilder) super.username(username);
-    }
-    
-    @Override
-     public CopyOfBuilder location(String location) {
-      return (CopyOfBuilder) super.location(location);
     }
     
     @Override
@@ -281,6 +291,11 @@ public final class User implements Model {
     @Override
      public CopyOfBuilder age(Integer age) {
       return (CopyOfBuilder) super.age(age);
+    }
+    
+    @Override
+     public CopyOfBuilder location(String location) {
+      return (CopyOfBuilder) super.location(location);
     }
   }
   
