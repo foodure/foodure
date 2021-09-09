@@ -60,6 +60,7 @@ mutation CreateRestaurant(
       items {
         id
         foodID
+        foodCartID
         title
         quantity
         typeOfQuantity
@@ -94,6 +95,7 @@ mutation UpdateRestaurant(
       items {
         id
         foodID
+        foodCartID
         title
         quantity
         typeOfQuantity
@@ -128,6 +130,7 @@ mutation DeleteRestaurant(
       items {
         id
         foodID
+        foodCartID
         title
         quantity
         typeOfQuantity
@@ -157,6 +160,25 @@ mutation CreateCart(
     id
     username
     location
+    cartPost {
+      items {
+        id
+        foodID
+        foodCartID
+        title
+        quantity
+        typeOfQuantity
+        location
+        fileName
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -172,6 +194,25 @@ mutation UpdateCart(
     id
     username
     location
+    cartPost {
+      items {
+        id
+        foodID
+        foodCartID
+        title
+        quantity
+        typeOfQuantity
+        location
+        fileName
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -187,6 +228,25 @@ mutation DeleteCart(
     id
     username
     location
+    cartPost {
+      items {
+        id
+        foodID
+        foodCartID
+        title
+        quantity
+        typeOfQuantity
+        location
+        fileName
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -201,6 +261,7 @@ mutation CreateFoodPost(
   createFoodPost(input: $input, condition: $condition) {
     id
     foodID
+    foodCartID
     title
     quantity
     typeOfQuantity
@@ -212,6 +273,20 @@ mutation CreateFoodPost(
       username
       location
       restaurantPost {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    cart {
+      id
+      username
+      location
+      cartPost {
         nextToken
         startedAt
       }
@@ -235,6 +310,7 @@ mutation UpdateFoodPost(
   updateFoodPost(input: $input, condition: $condition) {
     id
     foodID
+    foodCartID
     title
     quantity
     typeOfQuantity
@@ -246,6 +322,20 @@ mutation UpdateFoodPost(
       username
       location
       restaurantPost {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    cart {
+      id
+      username
+      location
+      cartPost {
         nextToken
         startedAt
       }
@@ -269,6 +359,7 @@ mutation DeleteFoodPost(
   deleteFoodPost(input: $input, condition: $condition) {
     id
     foodID
+    foodCartID
     title
     quantity
     typeOfQuantity
@@ -280,6 +371,20 @@ mutation DeleteFoodPost(
       username
       location
       restaurantPost {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    cart {
+      id
+      username
+      location
+      cartPost {
         nextToken
         startedAt
       }

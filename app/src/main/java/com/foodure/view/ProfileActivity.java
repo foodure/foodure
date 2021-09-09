@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public class ProfileActivity extends AppCompatActivity {
 
-  private static final String TAG = "ProfileActivity";
+   static final String TAG = "ProfileActivity";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

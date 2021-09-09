@@ -101,6 +101,7 @@ query GetRestaurant($id: ID!) {
       items {
         id
         foodID
+        foodCartID
         title
         quantity
         typeOfQuantity
@@ -163,6 +164,10 @@ query SyncCarts(
       id
       username
       location
+      cartPost {
+        nextToken
+        startedAt
+      }
       _version
       _deleted
       _lastChangedAt
@@ -178,6 +183,25 @@ query GetCart($id: ID!) {
     id
     username
     location
+    cartPost {
+      items {
+        id
+        foodID
+        foodCartID
+        title
+        quantity
+        typeOfQuantity
+        location
+        fileName
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -195,6 +219,10 @@ query ListCarts(
       id
       username
       location
+      cartPost {
+        nextToken
+        startedAt
+      }
       _version
       _deleted
       _lastChangedAt
@@ -220,6 +248,7 @@ query SyncFoodPosts(
     items {
       id
       foodID
+      foodCartID
       title
       quantity
       typeOfQuantity
@@ -228,6 +257,16 @@ query SyncFoodPosts(
       restaurant {
         id
         title
+        username
+        location
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      cart {
+        id
         username
         location
         _version
@@ -250,6 +289,7 @@ query GetFoodPost($id: ID!) {
   getFoodPost(id: $id) {
     id
     foodID
+    foodCartID
     title
     quantity
     typeOfQuantity
@@ -261,6 +301,20 @@ query GetFoodPost($id: ID!) {
       username
       location
       restaurantPost {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    cart {
+      id
+      username
+      location
+      cartPost {
         nextToken
         startedAt
       }
@@ -286,6 +340,7 @@ query ListFoodPosts(
     items {
       id
       foodID
+      foodCartID
       title
       quantity
       typeOfQuantity
@@ -294,6 +349,16 @@ query ListFoodPosts(
       restaurant {
         id
         title
+        username
+        location
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      cart {
+        id
         username
         location
         _version

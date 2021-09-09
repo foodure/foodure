@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Foodure">
         <activity
+            android:name=".view.RequestedFoodActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.FoodDetailsActivity"
             android:exported="true" />
         <activity

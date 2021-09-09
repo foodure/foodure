@@ -24,9 +24,9 @@ import java.util.Objects;
 
 public class SignupActivity extends AppCompatActivity {
 
-  private static final String TAG = "SignupActivity";
-  private String spinnerLocation = null;
-  private String username = null;
+   static final String TAG = "SignupActivity";
+   String spinnerLocation = null;
+   String username = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

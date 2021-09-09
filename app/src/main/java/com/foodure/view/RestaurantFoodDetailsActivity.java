@@ -20,17 +20,17 @@ import java.net.URL;
 import java.util.Objects;
 
 public class RestaurantFoodDetailsActivity extends AppCompatActivity {
-  private static final String TAG = "RestaurantFoodDetailsActivity";
+   static final String TAG = "RestaurantFoodDetailsActivity";
 
-  private URL url = null;
-  private Handler handler;
+   URL url = null;
+   Handler handler;
 
-  private TextView restaurantLabel;
-  private TextView foodNameLabel;
-  private TextView foodQuantityLabel;
-  private TextView locationLabel;
-  private TextView foodTypeOfQuantityLabel;
-  private ImageView imageView;
+   TextView restaurantLabel;
+   TextView foodNameLabel;
+   TextView foodQuantityLabel;
+   TextView locationLabel;
+   TextView foodTypeOfQuantityLabel;
+   ImageView imageView;
 
   @SuppressLint("SetTextI18n")
   @Override

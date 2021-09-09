@@ -15,8 +15,8 @@ import com.foodure.R;
 import java.util.List;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
-  private final List<FoodPost> foodDetailsList;
-  private final OnFoodClickListener onFoodClickListener;
+   final List<FoodPost> foodDetailsList;
+   final OnFoodClickListener onFoodClickListener;
 
   public interface OnFoodClickListener {
     void onRequestFood(int position);
@@ -54,10 +54,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
   }
 
   static class ViewHolder extends RecyclerView.ViewHolder {
-    private final TextView restaurantLabel;
-    private final TextView foodLabel;
-    private final TextView quantityLabel;
-    private final Button requestFoodBtn;
+     final TextView restaurantLabel;
+     final TextView foodLabel;
+     final TextView quantityLabel;
+     final Button requestFoodBtn;
 
 
     public ViewHolder(@NonNull View itemView, OnFoodClickListener onFoodClickListener) {

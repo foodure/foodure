@@ -23,6 +23,7 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 @Index(name = "foodItem", fields = {"foodID"})
 public final class FoodPost implements Model {
   public static final QueryField ID = field("FoodPost", "id");
+  public static final QueryField REQUESTED = field("FoodPost", "requested");
   public static final QueryField TITLE = field("FoodPost", "title");
   public static final QueryField QUANTITY = field("FoodPost", "quantity");
   public static final QueryField TYPE_OF_QUANTITY = field("FoodPost", "typeOfQuantity");
@@ -30,6 +31,7 @@ public final class FoodPost implements Model {
   public static final QueryField FILE_NAME = field("FoodPost", "fileName");
   public static final QueryField RESTAURANT = field("FoodPost", "foodID");
   private final @ModelField(targetType="ID", isRequired = true) String id;
+  private final @ModelField(targetType="String") String requested;
   private final @ModelField(targetType="String", isRequired = true) String title;
   private final @ModelField(targetType="String", isRequired = true) String quantity;
   private final @ModelField(targetType="String", isRequired = true) String typeOfQuantity;
@@ -40,6 +42,10 @@ public final class FoodPost implements Model {
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
       return id;
+  }
+  
+  public String getRequested() {
+      return requested;
   }
   
   public String getTitle() {
@@ -74,8 +80,9 @@ public final class FoodPost implements Model {
       return updatedAt;
   }
   
-  private FoodPost(String id, String title, String quantity, String typeOfQuantity, String location, String fileName, Restaurant restaurant) {
+  private FoodPost(String id, String requested, String title, String quantity, String typeOfQuantity, String location, String fileName, Restaurant restaurant) {
     this.id = id;
+    this.requested = requested;
     this.title = title;
     this.quantity = quantity;
     this.typeOfQuantity = typeOfQuantity;
@@ -93,6 +100,7 @@ public final class FoodPost implements Model {
       } else {
       FoodPost foodPost = (FoodPost) obj;
       return ObjectsCompat.equals(getId(), foodPost.getId()) &&
+              ObjectsCompat.equals(getRequested(), foodPost.getRequested()) &&
               ObjectsCompat.equals(getTitle(), foodPost.getTitle()) &&
               ObjectsCompat.equals(getQuantity(), foodPost.getQuantity()) &&
               ObjectsCompat.equals(getTypeOfQuantity(), foodPost.getTypeOfQuantity()) &&
@@ -108,6 +116,7 @@ public final class FoodPost implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
+      .append(getRequested())
       .append(getTitle())
       .append(getQuantity())
       .append(getTypeOfQuantity())
@@ -125,6 +134,7 @@ public final class FoodPost implements Model {
     return new StringBuilder()
       .append("FoodPost {")
       .append("id=" + String.valueOf(getId()) + ", ")
+      .append("requested=" + String.valueOf(getRequested()) + ", ")
       .append("title=" + String.valueOf(getTitle()) + ", ")
       .append("quantity=" + String.valueOf(getQuantity()) + ", ")
       .append("typeOfQuantity=" + String.valueOf(getTypeOfQuantity()) + ", ")
@@ -167,12 +177,14 @@ public final class FoodPost implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
+      requested,
       title,
       quantity,
       typeOfQuantity,
@@ -208,6 +220,7 @@ public final class FoodPost implements Model {
   public interface BuildStep {
     FoodPost build();
     BuildStep id(String id) throws IllegalArgumentException;
+    BuildStep requested(String requested);
     BuildStep fileName(String fileName);
   }
   
@@ -219,6 +232,7 @@ public final class FoodPost implements Model {
     private String typeOfQuantity;
     private String location;
     private Restaurant restaurant;
+    private String requested;
     private String fileName;
     @Override
      public FoodPost build() {
@@ -226,6 +240,7 @@ public final class FoodPost implements Model {
         
         return new FoodPost(
           id,
+          requested,
           title,
           quantity,
           typeOfQuantity,
@@ -270,6 +285,12 @@ public final class FoodPost implements Model {
     }
     
     @Override
+     public BuildStep requested(String requested) {
+        this.requested = requested;
+        return this;
+    }
+    
+    @Override
      public BuildStep fileName(String fileName) {
         this.fileName = fileName;
         return this;
@@ -287,13 +308,14 @@ public final class FoodPost implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String title, String quantity, String typeOfQuantity, String location, String fileName, Restaurant restaurant) {
+    private CopyOfBuilder(String id, String requested, String title, String quantity, String typeOfQuantity, String location, String fileName, Restaurant restaurant) {
       super.id(id);
       super.title(title)
         .quantity(quantity)
         .typeOfQuantity(typeOfQuantity)
         .location(location)
         .restaurant(restaurant)
+        .requested(requested)
         .fileName(fileName);
     }
     
@@ -320,6 +342,11 @@ public final class FoodPost implements Model {
     @Override
      public CopyOfBuilder restaurant(Restaurant restaurant) {
       return (CopyOfBuilder) super.restaurant(restaurant);
+    }
+    
+    @Override
+     public CopyOfBuilder requested(String requested) {
+      return (CopyOfBuilder) super.requested(requested);
     }
     
     @Override

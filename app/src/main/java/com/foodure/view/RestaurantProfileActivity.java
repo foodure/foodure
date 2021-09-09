@@ -22,14 +22,14 @@ import java.util.Objects;
 
 public class RestaurantProfileActivity extends AppCompatActivity {
 
-  private static final String TAG = "RestaurantProfileActivity";
-  private Restaurant restaurant;
-  private Handler handler;
-  private TextView restaurantName;
-  private TextView accountUsername;
-  private TextView restaurantLocation;
-  private ImageView emptyImg;
-  private TextView emptyTxt;
+   static final String TAG = "RestaurantProfileActivity";
+   Restaurant restaurant;
+   Handler handler;
+   TextView restaurantName;
+   TextView accountUsername;
+   TextView restaurantLocation;
+   ImageView emptyImg;
+   TextView emptyTxt;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

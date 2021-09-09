@@ -18,8 +18,8 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
-  private static final String TAG = "LoginActivity";
-  private Account AccountData;
+   static final String TAG = "LoginActivity";
+   Account AccountData;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
